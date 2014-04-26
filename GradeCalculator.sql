@@ -19,11 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `gradecalculator`
 --
-CREATE DATABASE IF NOT EXISTS `gradecalculator` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `gradecalculator`;
-
-USE DATABASE gradecalculator;
-
+CREATE DATABASE GradeCalculator;
+USE GradeCalculator;
 -- --------------------------------------------------------
 
 --
