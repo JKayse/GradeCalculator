@@ -1,0 +1,63 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gradecalculator.MainActivity"
+    tools:ignore="MergeRootFrame">
+ 
+     <ImageView
+       android:layout_width="100dp"
+       android:layout_height="100dp"
+       android:src="@drawable/ic_launcher" 
+       android:id="@+id/icon" 
+       android:contentDescription="@string/app_name"
+       android:layout_centerHorizontal="true" />
+
+   <EditText
+        android:id="@+id/username_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/username_placeholder"
+        android:layout_below="@id/icon"
+        android:layout_centerHorizontal="true"
+	   	android:layout_marginRight="20dp"
+	   	android:layout_marginLeft="20dp"
+	   	android:layout_marginTop="10dp" />
+
+
+   <EditText
+       android:id="@+id/password_placeholder"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"      
+       android:hint="@string/password_placeholder"
+       android:inputType="textPassword"
+	   android:layout_centerHorizontal="true"
+	   android:layout_below="@id/username_placeholder"
+	   android:layout_marginRight="20dp"
+	   android:layout_marginLeft="20dp" />
+   
+   <Button
+       android:id="@+id/signIn"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginRight="20dp"
+	   android:layout_marginLeft="20dp" 
+       android:text="@string/signIn" 
+       android:layout_below="@id/password_placeholder"
+       android:gravity="center" />
+   
+  
+      
+  	<Button
+       android:id="@+id/signUp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginRight="20dp"
+	   android:layout_marginLeft="20dp" 
+       android:text="@string/signUp" 
+       android:gravity="center"
+       android:layout_below="@id/signIn"/>
+    
+</RelativeLayout>
+

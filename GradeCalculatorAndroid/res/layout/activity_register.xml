@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gradecalculator.MainActivity"
+    tools:ignore="MergeRootFrame">
+
+   <EditText
+        android:id="@+id/username_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/username_placeholder"
+        android:layout_below="@id/icon"
+        android:layout_centerHorizontal="true"
+	   	android:layout_marginRight="10dp"
+	   	android:layout_marginLeft="10dp"
+	   	android:layout_marginTop="10dp" />
+
+
+   <EditText
+       android:id="@+id/password_placeholder"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"      
+       android:hint="@string/password_placeholder"
+       android:inputType="textPassword"
+	   android:layout_centerHorizontal="true"
+	   android:layout_below="@id/username_placeholder"
+	   android:layout_marginRight="10dp"
+	   android:layout_marginLeft="10dp" />
+	   
+<EditText
+       android:id="@+id/confirm_placeholder"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"      
+       android:hint="@string/confirm_placeholder"
+       android:inputType="textPassword"
+	   android:layout_centerHorizontal="true"
+	   android:layout_below="@id/password_placeholder"
+	   android:layout_marginRight="10dp"
+	   android:layout_marginLeft="10dp" />
+    
+      
+  	<Button
+       android:id="@+id/signUp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginRight="10dp"
+	   android:layout_marginLeft="10dp" 
+       android:text="@string/signUp" 
+       android:gravity="center"
+       android:layout_below="@id/confirm_placeholder"/>
+    
+</RelativeLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GradeCalculator</string>
+    <string name="about">About</string>
+    <string name="signOut">Sign Out</string>
+    <string name="username_placeholder">Username</string>
+    <string name="password_placeholder">Password</string>
+    <string name="confirm_placeholder">Confirm Password</string>  
+    <string name="signIn">Sign In</string>
+    <string name="signUp">Sign Up</string>
+    <string name="classes">Classes</string>
+
+    
+    
+
+</resources>
