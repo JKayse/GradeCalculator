@@ -1,0 +1,80 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gradecalculator.MainActivity"
+    tools:ignore="MergeRootFrame">
+
+    <TextView 
+	    android:id="@+id/className"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/className"
+	    android:textSize="35sp"
+	    android:layout_marginLeft="10dp"
+	    android:layout_marginTop="10dp" />
+    
+   <TextView
+        android:id="@+id/professor"
+        android:textSize="30sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/addProfessor"
+        android:layout_below="@id/className"
+	   	android:layout_marginRight="10dp"
+	   	android:layout_marginLeft="10dp"
+	   	android:layout_marginTop="10dp" />
+	
+	 <TextView 
+	    android:id="@+id/grading"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/grading"
+	    android:textSize="30sp"
+	    android:layout_below="@id/professor"
+	    android:layout_marginLeft="10dp"
+	    android:layout_marginTop="10dp" />
+	 
+	 <ExpandableListView 
+	     android:id="@+id/scrollGrading"
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:layout_below="@id/grading"
+	     android:layout_above="@+id/buttonContainer"
+	     android:background="@drawable/grading_container"
+	     android:layout_margin="7dp">
+
+	 </ExpandableListView>
+	 
+	 <LinearLayout 
+	     android:orientation="horizontal"
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:id="@id/buttonContainer"
+	     android:layout_alignParentBottom="true"
+	     android:layout_marginBottom="10dp">
+	     <Button
+	       android:id="@+id/addGrade"
+	       android:layout_width="0dp"
+	       android:layout_weight=".5"
+	       android:layout_height="wrap_content"
+	       android:layout_marginRight="10dp"
+		   android:layout_marginLeft="10dp" 
+	       android:text="@string/addGrade" 
+	       android:gravity="center"/>
+	     <Button
+	       android:id="@+id/deleteClass"
+	       android:layout_width="0dp"
+	       android:layout_weight=".5"
+	       android:layout_height="wrap_content"
+	       android:layout_marginRight="10dp"
+		   android:layout_marginLeft="10dp" 
+	       android:text="@string/deleteClass" 
+	       android:gravity="center"/>
+	 </LinearLayout>
+	 
+    
+
+    
+</RelativeLayout>

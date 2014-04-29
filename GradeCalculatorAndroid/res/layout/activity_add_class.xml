@@ -6,39 +6,123 @@
     tools:context="com.example.gradecalculator.MainActivity"
     tools:ignore="MergeRootFrame">
 
+    <TextView 
+	    android:id="@+id/addClassTitle"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/addClass"
+	    android:textSize="35sp"
+	    android:layout_marginLeft="10dp"
+	    android:layout_marginTop="10dp" />
+    
    <EditText
-        android:id="@+id/username_placeholder"
+        android:id="@+id/addClassName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/username_placeholder"
-        android:layout_below="@id/icon"
+        android:hint="@string/className"
+        android:layout_below="@id/addClassTitle"
         android:layout_centerHorizontal="true"
 	   	android:layout_marginRight="10dp"
 	   	android:layout_marginLeft="10dp"
 	   	android:layout_marginTop="10dp" />
-
-
-   <EditText
-       android:id="@+id/password_placeholder"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"      
-       android:hint="@string/password_placeholder"
-       android:inputType="textPassword"
-	   android:layout_centerHorizontal="true"
-	   android:layout_below="@id/username_placeholder"
-	   android:layout_marginRight="10dp"
-	   android:layout_marginLeft="10dp" />
 	   
-<EditText
-       android:id="@+id/confirm_placeholder"
+	<EditText
+       android:id="@+id/addProfessor"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"      
-       android:hint="@string/confirm_placeholder"
+       android:hint="@string/addProfessor"
        android:inputType="textPassword"
 	   android:layout_centerHorizontal="true"
-	   android:layout_below="@id/password_placeholder"
+	   android:layout_below="@id/addClassName"
 	   android:layout_marginRight="10dp"
 	   android:layout_marginLeft="10dp" />
+	
+	 <TextView 
+	    android:id="@+id/addGrading"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/addGrading"
+	    android:textSize="30sp"
+	    android:layout_below="@id/addProfessor"
+	    android:drawableRight="@drawable/ic_launcher"
+	    android:layout_marginLeft="10dp"
+	    android:layout_marginTop="10dp" />
+	 
+	 <ScrollView 
+	     android:id="@+id/scrollGrading"
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:layout_below="@id/addGrading"
+	     android:layout_above="@+id/buttonContainer"
+	     android:background="@drawable/grading_container"
+	     android:layout_margin="7dp">
+	     <LinearLayout 
+	         android:orientation="vertical"
+	         android:layout_width="match_parent"
+	         android:layout_height="wrap_content">
+		     <LinearLayout
+		         android:orientation="horizontal"
+		         android:layout_width="match_parent"
+		         android:layout_height="wrap_content">
+		         <EditText
+			        android:layout_width="0dp"
+			        android:layout_weight=".70"
+			        android:layout_height="wrap_content"
+			        android:hint="@string/category"
+				   	android:layout_marginRight="2dp"
+				   	android:layout_marginLeft="10dp"
+				   	android:layout_marginTop="10dp" />
+		         <EditText
+			        android:layout_width="0dp"
+			        android:layout_weight=".20"
+			        android:layout_height="wrap_content"
+				   	android:layout_marginRight="2dp"
+				   	android:layout_marginLeft="2dp"
+				   	android:layout_marginTop="10dp"
+				   	android:inputType="number" />
+		         <TextView
+			        android:layout_width="0dp"
+			        android:layout_weight=".10"
+			        android:layout_height="wrap_content"
+			        android:text="@string/percentage"
+				   	android:layout_marginRight="10dp"
+				   	android:layout_marginLeft="2dp"
+				   	android:layout_marginTop="10dp" 
+				   	android:textSize="20sp"/>
+		     </LinearLayout>
+		  
+	     </LinearLayout>
+	     
+	     
+	 </ScrollView>
+	 
+	 <LinearLayout 
+	     android:orientation="horizontal"
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:id="@id/buttonContainer"
+	     android:layout_alignParentBottom="true"
+	     android:layout_marginBottom="10dp">
+	     <Button
+	       android:id="@+id/submitClass"
+	       android:layout_width="0dp"
+	       android:layout_weight=".5"
+	       android:layout_height="wrap_content"
+	       android:layout_marginRight="10dp"
+		   android:layout_marginLeft="10dp" 
+	       android:text="@string/submitClass" 
+	       android:gravity="center"/>
+	     <Button
+	       android:id="@+id/cancelAdd"
+	       android:layout_width="0dp"
+	       android:layout_weight=".5"
+	       android:layout_height="wrap_content"
+	       android:layout_marginRight="10dp"
+		   android:layout_marginLeft="10dp" 
+	       android:text="@string/cancelAdd" 
+	       android:gravity="center"/>
+	 </LinearLayout>
+	 
     
 
     

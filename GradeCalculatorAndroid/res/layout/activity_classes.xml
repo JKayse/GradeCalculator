@@ -12,7 +12,8 @@
 	    android:layout_height="wrap_content"
 	    android:text="@string/classes"
 	    android:textSize="35sp"
-	    android:drawableRight="@drawable/ic_launcher" />
+	    android:drawableRight="@drawable/ic_launcher"
+	    android:layout_marginTop="10dp" />
 	<ListView 
 	    android:id="@+id/classList"
 	    android:layout_width="match_parent"

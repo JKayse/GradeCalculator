@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="MergeRootFrame"
+    android:background="@drawable/grading_container"
+    android:layout_marginBottom="5dp">
+    
+    
+	<!-- Holds the image. -->	
+	<TextView
+	    android:id="@+id/className"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentTop="true"
+	    android:text="@string/className"
+	    android:paddingTop="10dp"
+	    android:textSize="18sp"
+	    android:paddingLeft="10dp" />
+	
+	<TextView
+	    android:id="@+id/professor"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@id/className"
+	    android:text="@string/addProfessor"
+	    android:textSize="18sp"
+	    android:paddingTop="10dp"
+	    android:paddingLeft="10dp"/>
+
+	
+	
+
+</RelativeLayout>

@@ -10,6 +10,22 @@
     <string name="signIn">Sign In</string>
     <string name="signUp">Sign Up</string>
     <string name="classes">Classes</string>
+    <string name="addClass">Add Class</string>
+    <string name="addGrading">Grading</string>
+    <string name="grading">Grading:</string>
+    <string name="addProfessor">Professor</string>
+    <string name="className">Class Name</string>
+    <string name="required">*</string>
+    <string name="submitClass">Submit</string>
+    <string name="cancelAdd">Cancel</string>
+    <string name="category">Category</string>
+    <string name="percentage">%</string>
+    <string name="addGrade">Add Grade</string>
+    <string name="deleteClass">Delete Class</string>
+    <string name="categoryName">Category</string>
+    <string name="score">100%</string>
+    <string name="grade">Assignment 1</string>
+    <string name="addGradeName">Assignment Name</string>
 
     
     
