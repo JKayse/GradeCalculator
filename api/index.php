@@ -66,7 +66,7 @@ function addUser()
     $username = Slim::getInstance()->request()->post('username');
     $password = password_hash(Slim::getInstance()->request()->post('password'), PASSWORD_DEFAULT);
 
-    $sql = "SELECT username FROM Users WHERE username=:username";
+    $sql = "SELECT username FROM users WHERE username=:username";
 
     try
     {
@@ -89,7 +89,7 @@ function addUser()
     }
 
 
-    $sql = "INSERT INTO Users (username, password) VALUES (:username, :password)";
+    $sql = "INSERT INTO users (username, password) VALUES (:username, :password)";
 
     try
     {
@@ -121,7 +121,7 @@ function login() {
     try {
         $db = getConnection();
 
-	$sql = "SELECT userId FROM Users WHERE username=:username";
+	$sql = "SELECT userId FROM users WHERE username=:username";
 	$stmt = $db->prepare($sql);
 	$stmt->bindParam("username", $username);
 	$stmt->execute();
@@ -131,7 +131,7 @@ function login() {
 		return;
 	}
 
-	$sql = "SELECT password FROM Users WHERE username=:username";
+	$sql = "SELECT password FROM users WHERE username=:username";
         $stmt = $db->prepare($sql);
         $stmt->bindParam("username", $username);
         $stmt->execute();
