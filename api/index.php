@@ -21,10 +21,6 @@ $app->get(
         $response->write('The API is working');
     });
 
-/**
-* Checks whether the user is logged in
-*/
-$app->get('/LoginStatus', 'getLoginStatus');
 
 /**
 * User Registration
@@ -45,17 +41,6 @@ $app->post('/Logout', 'logout');
 
 $app->run();
 
-/**
-* A function to check whether or not the user is logged in
-* @return JSON The email and id of the user logged in.
-*/
-function getLoginStatus() {
-    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-        echo '{"Username": "' . $_SESSION['username'] . '", "ID": ' . $_SESSION['userId'] . '}';
-    } else {
-        echo "null";
-    }
-}
 
 /**
 * A funtion that takes the information inputed by a user and creates
@@ -64,7 +49,7 @@ function getLoginStatus() {
 function addUser()
 {
     $username = Slim::getInstance()->request()->post('username');
-    $password = password_hash(Slim::getInstance()->request()->post('password'), PASSWORD_DEFAULT);
+    $password = Slim::getInstance()->request()->post('password');
 
     $sql = "SELECT username FROM users WHERE username=:username";
 
@@ -135,19 +120,16 @@ function login() {
         $stmt = $db->prepare($sql);
         $stmt->bindParam("username", $username);
         $stmt->execute();
-        $hashedPassword = $stmt->fetchObject()->password;
+        $storedPassword = $stmt->fetchObject()->password;
 
-        if(empty($hashedPassword)) {
+        if(empty($storedPassword)) {
                 echo "null";
-        } else if(password_verify($password, $hashedPassword)) {
-		$_SESSION['loggedin'] = true;
-		$query = "SELECT userId FROM Users WHERE username=:username";
-		$stmt2 = $db->prepare($query);
-		$stmt2->bindParam("username", $username);
-		$stmt2->execute();
-		$_SESSION['userId'] = $stmt2->fetchObject()->userId;
-		$_SESSION['username'] = $username;
-         	echo '{"Username": "' . $_SESSION['username'] . '", "ID": ' . $_SESSION['userId'] . '}'; 
+        } else if(strcmp($password, $storedPassword)) {
+		      $query = "SELECT userId FROM Users WHERE username=:username";
+		      $stmt2 = $db->prepare($query);
+		      $stmt2->bindParam("username", $username);
+		      $stmt2->execute();
+         	  echo '{"Username": "' . $username . '", "ID": ' . $stmt2->fetchObject()->userId . '}'; 
         } else {
 		echo "null";
 	}
