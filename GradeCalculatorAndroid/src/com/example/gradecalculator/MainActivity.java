@@ -18,22 +18,19 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.os.Build;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -41,6 +38,23 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		Button signIn = (Button) findViewById(R.id.signIn);
+		Button signUp = (Button) findViewById(R.id.signUp);
+		
+		signUp.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				registerNew(v);
+			}
+		});
+		
+		signIn.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				loginAttempt(v);
+			}
+		});
+		
 
 	}
 	@Override
@@ -50,7 +64,9 @@ public class MainActivity extends ActionBarActivity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-
+	
+	
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will
@@ -107,7 +123,7 @@ public class MainActivity extends ActionBarActivity {
 			
 			HttpResponse response = null;
 			HttpClient client= new DefaultHttpClient();
-			HttpPost post = new HttpPost("http://54.200.94.110/GradeCalculator/api/Login");
+			HttpPost post = new HttpPost("http://54.200.94.110/GradeCalculator/api/index.php/Login");
 			
 			List<NameValuePair> pairs = new ArrayList<NameValuePair>();
 			pairs.add(new BasicNameValuePair("username", params[0]));
@@ -182,8 +198,8 @@ public class MainActivity extends ActionBarActivity {
 		        temp.setUsername(username);
 		        temp.setUserId(ID);
 		        
-		        //Intent toMain = new Intent(context, Application_main.class);
-				//startActivity(toMain);
+		        Intent toMain = new Intent(context, Classes.class);
+				startActivity(toMain);
 			}
 		}
     }
