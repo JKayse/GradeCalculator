@@ -124,7 +124,7 @@ function login() {
 
         if(empty($storedPassword)) {
                 echo "null";
-        } else if(strcmp($password, $storedPassword)) {
+        } else if(strcmp($password, $storedPassword) == 0) {
 		      $query = "SELECT userId FROM Users WHERE username=:username";
 		      $stmt2 = $db->prepare($query);
 		      $stmt2->bindParam("username", $username);
