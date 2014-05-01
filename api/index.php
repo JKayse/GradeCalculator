@@ -37,7 +37,15 @@ $app->post('/Login', 'login');
 */
 $app->post('/Logout', 'logout');
 
+/**
+* View Classes
+*/
+$app->get('/Classes/:userId', 'viewClasses');
 
+/**
+* View a Class
+*/
+$app->get('/Class/:classId', 'viewClass');
 
 $app->run();
 
@@ -156,6 +164,82 @@ function logout() {
 }
 
 
+/**
+* A function to get all the classes of the user
+*/
+function viewClasses($userId){
+    $sql = "SELECT classId, className, professor FROM classes WHERE userId=:userId ORDER BY className";
+    try {
+            $db = getConnection();
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam("userId", $userId);
+            $stmt->execute();
+            $Classes = $stmt->fetchAll(PDO::FETCH_OBJ);
+            $db = null;
+            echo '{"Classes": ' . json_encode($Classes) . '}';
+        } catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+        }
+}
+
+/**
+* A function to get information from one class
+*/
+function viewClass($classId){
+    try {
+        $db = getConnection();
+
+        $sql = "SELECT className, professor FROM classes WHERE classId=:classId";
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam('classId', $classId);
+        $stmt->execute();
+        $class = $stmt->fetchObject();
+        $className = $class->className;
+        $professor = $class->professor;
+
+        $sql2 = "SELECT categoryId, categoryName, percentage FROM category WHERE classId=:classId";
+        $stmt2 = $db->prepare($sql2);
+        $stmt2->bindParam('classId', $classId);
+        $stmt2->execute();
+        $categories = $stmt2->fetchAll(PDO::FETCH_OBJ);
+
+        echo '{"Class": { "className": "' . $className .'", "professor": "' . $professor .'", "categories": [' ;
+        $i = 0;
+        foreach($categories as $category) {
+            if($i != 0) {
+                echo ',';
+            } else {
+                $i++;
+            }
+            $categoryId = $category->categoryId;
+            $categoryName = $category->categoryName;
+            $percentage = $category->percentage;
+            $sql3 = "SELECT gradeId, gradeName, percentage FROM grades WHERE categoryId=:categoryId";
+            $stmt3 = $db->prepare($sql3);
+            $stmt3->bindParam('categoryId', $categoryId);
+            $stmt3->execute();
+            $grades = $stmt3->fetchAll(PDO::FETCH_OBJ);
+            echo '{"categoryId": "'. $categoryId .'", "categoryName": "'. $categoryName .'", "categoryPercentage": "'. $percentage .'"';
+            echo ', "grades": ['; 
+            $j =0;
+            foreach($grades as $grade) {
+                if($j != 0) {
+                    echo ',';
+                } else {
+                    $j++;
+                }
+                echo json_encode($grade);
+            }
+            echo ']}';
+        }
+        echo ']}}';
+
+            $db = null;
+
+    } catch(PDOExection $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
+}
 
 
 /**
