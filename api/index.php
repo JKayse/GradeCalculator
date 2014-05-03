@@ -199,21 +199,13 @@ function viewClass($classId){
     try {
         $db = getConnection();
 
-        $sql = "SELECT className, professor FROM classes WHERE classId=:classId";
-        $stmt = $db->prepare($sql);
-        $stmt->bindParam('classId', $classId);
-        $stmt->execute();
-        $class = $stmt->fetchObject();
-        $className = $class->className;
-        $professor = $class->professor;
-
         $sql2 = "SELECT categoryId, categoryName, percentage FROM category WHERE classId=:classId";
         $stmt2 = $db->prepare($sql2);
         $stmt2->bindParam('classId', $classId);
         $stmt2->execute();
         $categories = $stmt2->fetchAll(PDO::FETCH_OBJ);
 
-        echo '{"Class": { "className": "' . $className .'", "professor": "' . $professor .'", "categories": [' ;
+        echo '{"Categories": [' ;
         $i = 0;
         foreach($categories as $category) {
             if($i != 0) {
