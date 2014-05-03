@@ -268,14 +268,14 @@ int id edit_query 0x7f050030
 int id end 0x7f050013
 int id expand_activities_button 0x7f050026
 int id expanded_menu 0x7f05002c
-int id gradeName 0x7f050054
+int id gradeName 0x7f050055
 int id grading 0x7f050047
 int id home 0x7f050014
 int id homeAsUp 0x7f050005
 int id icon 0x7f05002a
 int id ifRoom 0x7f05000a
 int id image 0x7f050027
-int id information 0x7f050055
+int id information 0x7f050056
 int id listMode 0x7f050001
 int id list_item 0x7f050029
 int id middle 0x7f050012
@@ -283,6 +283,7 @@ int id never 0x7f050009
 int id none 0x7f050010
 int id normal 0x7f050000
 int id password_placeholder 0x7f05004d
+int id percentage 0x7f050054
 int id professor 0x7f050046
 int id progress_circular 0x7f050018
 int id progress_horizontal 0x7f050019
@@ -303,7 +304,7 @@ int id showCustom 0x7f050007
 int id showHome 0x7f050004
 int id showTitle 0x7f050006
 int id signIn 0x7f05004e
-int id signOut 0x7f050056
+int id signOut 0x7f050057
 int id signUp 0x7f05004f
 int id split_action_bar 0x7f05001e
 int id submitClass 0x7f050043
@@ -349,7 +350,8 @@ int layout category_item 0x7f03001d
 int layout class_item 0x7f03001e
 int layout grade_item 0x7f03001f
 int layout support_simple_spinner_dropdown_item 0x7f030020
-int menu main 0x7f0c0000
+int menu logged_in 0x7f0c0000
+int menu main 0x7f0c0001
 int string abc_action_bar_home_description 0x7f0a0001
 int string abc_action_bar_up_description 0x7f0a0002
 int string abc_action_menu_overflow_description 0x7f0a0003

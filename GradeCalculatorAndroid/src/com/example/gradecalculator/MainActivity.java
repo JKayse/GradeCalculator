@@ -76,9 +76,6 @@ public class MainActivity extends ActionBarActivity {
 		if (id == R.id.information) {
 			return true;
 		}
-		if(id == R.id.signOut) {
-			return true;
-		}
 		return super.onOptionsItemSelected(item);
 	}
 	
