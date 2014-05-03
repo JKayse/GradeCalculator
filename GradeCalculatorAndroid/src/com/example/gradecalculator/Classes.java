@@ -3,8 +3,6 @@ package com.example.gradecalculator;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.util.Scanner;
 
@@ -13,7 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
-import android.graphics.Bitmap;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -21,8 +19,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ListView;
-import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class Classes extends ActionBarActivity{
 	String mainURL = "http://54.200.94.110/GradeCalculator/api/index.php/Classes/";
@@ -36,7 +35,23 @@ public class Classes extends ActionBarActivity{
 		setContentView(R.layout.activity_classes);
 		task.execute(mainURL);
 		list = (ListView) findViewById(R.id.classList);
+		
+		TextView addClass = (TextView) findViewById(R.id.classTitle);
+		
+		addClass.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				addClass(v);
+			}
+		});
 	}
+	
+	public void addClass(View view){
+    	
+    	Intent newClass = new Intent(this,AddClass.class );
+    	startActivity(newClass);
+    	
+    }
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
