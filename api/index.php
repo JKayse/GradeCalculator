@@ -47,6 +47,16 @@ $app->get('/Classes/:userId', 'viewClasses');
 */
 $app->get('/Class/:classId', 'viewClass');
 
+/**
+* Add a class
+*/
+$app->post('/AddClass', 'addClass');
+
+/**
+* Add a grade for a class
+*/
+$app->post('/AddGrade', 'addGrade');
+
 $app->run();
 
 
@@ -239,6 +249,64 @@ function viewClass($classId){
     } catch(PDOExection $e) {
         echo '{"error":{"text":'. $e->getMessage() .'}}';
     }
+}
+
+/**
+* A function to add a class
+*/
+function addClass(){
+    $userId = Slim::getInstance()->request()->post('userId');
+    $className = Slim::getInstance()->request()->post('className');
+    $professor = Slim::getInstance()->request()->post('professor');
+    $categories = json_decode(Slim::getInstance()->request()->post('categories'), true);
+    try {
+        $insertClass = "INSERT INTO classes(userId, className, professor) VALUE(:userId, :className, :professor)";
+        $db = getConnection();
+        $stmt = $db->prepare($insertClass);
+        $stmt->bindParam("userId", $userId);
+        $stmt->bindParam("className", $className);
+        $stmt->bindParam("professor", $professor);
+        $stmt->execute();
+        $classId = $db->lastInsertId();
+        
+        foreach($categories['category'] as $category) {
+            $categoryName = $category['categoryName'];
+            $percentage =  $category['percentage'];
+            $insertCategory = "INSERT INTO category(classId, categoryName, percentage) VALUE(:classId, :categoryName, :percentage)";
+            $stmt = $db->prepare($insertCategory);
+            $stmt->bindParam("classId", $classId);
+            $stmt->bindParam("categoryName", $categoryName);
+            $stmt->bindParam("percentage", $percentage);
+            $stmt->execute();
+        }
+        $db = null;
+
+    } catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+    }   
+}
+
+
+/**
+* Add a grade for a class
+*/
+function addGrade(){
+    $categoryId = Slim::getInstance()->request()->post('categoryId');
+    $gradeName = Slim::getInstance()->request()->post('gradeName');
+    $percentage = Slim::getInstance()->request()->post('percentage');
+    try {
+        $insertGrade = "INSERT INTO grades(categoryId, gradeName, percentage) VALUE(:categoryId, :gradeName, :percentage)";
+        $db = getConnection();
+        $stmt = $db->prepare($insertGrade);
+        $stmt->bindParam("categoryId", $categoryId);
+        $stmt->bindParam("gradeName", $gradeName);
+        $stmt->bindParam("percentage", $percentage);
+        $stmt->execute();
+        $db = null;
+
+    } catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+    }   
 }
 
 
