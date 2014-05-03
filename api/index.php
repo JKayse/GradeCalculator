@@ -40,12 +40,12 @@ $app->post('/Logout', 'logout');
 /**
 * View Classes
 */
-$app->get('/Classes/:userId', 'viewClasses');
+$app->post('/Classes/:userId', 'viewClasses');
 
 /**
 * View a Class
 */
-$app->get('/Class/:classId', 'viewClass');
+$app->post('/Class/:classId', 'viewClass');
 
 /**
 * Add a class
