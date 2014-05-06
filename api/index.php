@@ -57,6 +57,23 @@ $app->post('/AddClass', 'addClass');
 */
 $app->post('/AddGrade', 'addGrade');
 
+
+/**
+* Delete a class for a user.
+*/
+$app->post('/DeleteClass', 'deleteClass');
+
+/**
+* Delete a grade for a user.
+*/
+$app->post('/DeleteGrade', 'deleteGrade');
+
+
+/**
+* Edit a grade for a user.
+*/
+$app->post('/EditGrade', 'editGrade');
+
 $app->run();
 
 
@@ -300,6 +317,88 @@ function addGrade(){
     echo '{"error":{"text":'. $e->getMessage() .'}}'; 
     }   
 }
+
+
+function deleteClass(){
+    $classId = Slim::getInstance()->request()->post('classId');
+    try
+    {
+        $sql = "SELECT categoryId FROM category WHERE classId=:classId";
+        $db = getConnection();
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("classId", $classId);
+        $stmt->execute();
+        $db = null;
+        $categories = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+        foreach($categories as $category) {
+            echo $category->categoryId;
+            $deleteRequest = "DELETE FROM grades WHERE categoryId=:category";
+            $db = getConnection();
+            $stmt3 = $db->prepare($deleteRequest);
+            $stmt3->bindParam('category', $category->categoryId);
+            $stmt3->execute();
+            $deleteRequest2 = "DELETE FROM category WHERE categoryId=:category";
+            $stmt3 = $db->prepare($deleteRequest2);
+            $stmt3->bindParam('category', $category->categoryId);
+            $stmt3->execute();
+            $db = null;
+        }
+        $deleteRequest3 = "DELETE FROM classes WHERE classId=:classId";
+        $db = getConnection();
+        $stmt3 = $db->prepare($deleteRequest3);
+        $stmt3->bindParam('classId', $classId);
+        $stmt3->execute();
+        $db = null;
+
+    }
+    catch(PDOException $e) 
+    {
+        echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+    }
+}
+
+function deleteGrade(){
+    $gradeId = Slim::getInstance()->request()->post('gradeId');
+    try
+    {
+        $sql = "DELETE FROM grades WHERE gradeId=:gradeId";
+        $db = getConnection();
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("gradeId", $gradeId);
+        $stmt->execute();
+        $db = null;
+    }
+    catch(PDOException $e) 
+    {
+        echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+    }
+
+}
+
+
+/**
+* Edit a grade for a class
+*/
+function editGrade(){
+    $gradeName = Slim::getInstance()->request()->post('gradeName');
+    $percentage = Slim::getInstance()->request()->post('percentage');
+    $gradeId = Slim::getInstance()->request()->post('gradeId');
+    try {
+        $sql = "UPDATE grades SET gradeName = :gradeName, percentage = :percentage WHERE gradeId = :gradeId"; 
+        $db = getConnection();
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("gradeName", $gradeName);
+        $stmt->bindParam("percentage", $percentage);
+        $stmt->bindParam("gradeId", $gradeId);
+        $stmt->execute();
+        $db = null;
+
+    } catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+    }   
+}
+
 
 
 /**
