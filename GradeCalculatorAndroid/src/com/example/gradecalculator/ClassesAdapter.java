@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +45,7 @@ public class ClassesAdapter extends ArrayAdapter<ClassItem>{
 					ArrayList<Integer> classNumber = new ArrayList(1);
 					classNumber.add(position);	
 					intent.putIntegerArrayListExtra(ClassInfo.CLASS_KEY, classNumber);
-					context.startActivity(intent);
+			    	((FragmentActivity) context).startActivityForResult(intent,Classes.CLASS_REQUEST);
 				}
 			});
  

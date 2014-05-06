@@ -17,7 +17,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -130,6 +132,9 @@ public class AddClass extends ActionBarActivity{
 				Log.d("JLK", newClassName);
 				Log.d("JLK", newProfessor);
 				new classRequest(this).execute(newClassName, newProfessor, newCategories);
+				Intent intent = new Intent();
+				setResult(Activity.RESULT_OK , intent);
+				finish();
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

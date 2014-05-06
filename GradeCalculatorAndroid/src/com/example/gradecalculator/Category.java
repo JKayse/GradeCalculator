@@ -5,6 +5,7 @@ public class Category {
 
 	String mCategoryName;
 	String mPercentage;
+	String mCurrentPercentage;
 	String mCategoryId;
 	Grade[] grades;
 	
@@ -14,6 +15,7 @@ public class Category {
 	}
 	public void setGrades(Grade[] values){
 		this.grades = values;
+		//calculate the percentage from the grades given.
 	}
 	
 	public String getGradeName(Integer position){
@@ -49,6 +51,10 @@ public class Category {
 	}
 	public String getCategoryId(){
 		return mCategoryId;
+	}
+	
+	public String toString(){
+		return mCategoryName;
 	}
 
 }

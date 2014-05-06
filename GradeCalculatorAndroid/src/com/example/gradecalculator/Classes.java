@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -27,6 +28,7 @@ public class Classes extends ActionBarActivity{
 	String mainURL = "http://54.200.94.110/GradeCalculator/api/index.php/Classes/";
 	DownloadJson task = new DownloadJson(this);
 	ListView list;
+	public static final int CLASS_REQUEST = 1753;
 	
 	
 	@Override
@@ -49,9 +51,21 @@ public class Classes extends ActionBarActivity{
 	public void addClass(View view){
     	
     	Intent newClass = new Intent(this,AddClass.class );
-    	startActivity(newClass);
+    	startActivityForResult(newClass,CLASS_REQUEST);
     	
     }
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data){
+		if(requestCode == CLASS_REQUEST && resultCode == Activity.RESULT_OK){
+			Intent intent = getIntent();
+			finish();
+			startActivity(intent);
+		}
+	}
+	
+	
+	
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

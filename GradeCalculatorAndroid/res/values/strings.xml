@@ -26,6 +26,11 @@
     <string name="score">100%</string>
     <string name="grade">Assignment 1</string>
     <string name="addGradeName">Assignment Name</string>
+    
+    <string name="addGradeButton">Submit</string>
+    <string name="cancelAddGrade">Cancel</string>
+    <string name="addGradeTitle">Add Grade</string>
+    <string name="outOf">/</string>
 
     
     

@@ -27,7 +27,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
+
 public class Registration extends ActionBarActivity{
+	EditText username;
+	EditText password;
+	EditText confirmPassword;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -68,9 +74,9 @@ public class Registration extends ActionBarActivity{
 	}
 	
 	public void registerAttempt(View view){
-	   	 EditText username = (EditText)findViewById(R.id.username_placeholder);
-	   	 EditText password = (EditText)findViewById(R.id.password_placeholder);
-	   	 EditText confirmPassword = (EditText)findViewById(R.id.confirm_placeholder);
+	   	 username = (EditText)findViewById(R.id.username_placeholder);
+	   	 password = (EditText)findViewById(R.id.password_placeholder);
+	   	 confirmPassword = (EditText)findViewById(R.id.confirm_placeholder);
 	   	 
 	   	 
 	   	  String newUsername=username.getText().toString();
@@ -79,19 +85,20 @@ public class Registration extends ActionBarActivity{
 	   	 
 	   	  //TODO valadation goes here
 	   	if(newUsername.length() == 0){
-			 Toast toast = Toast.makeText(this, "Enter a username.", 5000);
-			 toast.show();
+	   		 username.setError("Enter a username.");
 			 return;
 		 }
 
-		 else if(newPassword.length() < 8 || passwordCheck.length() < 8){
-			 Toast toast = Toast.makeText(this, "The password must be at least 8 characters long.", 5000);
-			 toast.show();
+		 else if(newPassword.length() < 8){
+			 password.setError("The password must be at least 8 characters long.");
+			 return;
+		 }
+		 else if(passwordCheck.length() < 8){
+			 confirmPassword.setError("The password must be at least 8 characters long.");
 			 return;
 		 }
 		 else if(!newPassword.equals(passwordCheck)){
-			 Toast toast = Toast.makeText(this, "The two passwords must match.", 5000);
-			 toast.show();
+			 confirmPassword.setError("The two passwords must match.");
 			 return;
 		 }
 	   	 
@@ -153,22 +160,18 @@ public class Registration extends ActionBarActivity{
 				CharSequence text = "";
 				Log.d("JLK", response);
 				if(response.equals("error_username")){
-					
-					text = "This username already exists.";
-					
-					
-				}else if(response.equals("error_email")){
-					text = "This email already exists.";
+					username.setError("This username already exists.");
+					return;				
 				}else{
-					 text = "Success! Login to continue";
+					text = "Success! Login to continue";
+					int duration = Toast.LENGTH_LONG;
+					Toast toast = Toast.makeText(context, text, duration);
+					toast.show();
+					return;
 					
 				}
 				
-				int duration = Toast.LENGTH_LONG;
-
-				Toast toast = Toast.makeText(context, text, duration);
-				toast.show();
-				return;
+				
 		     }
 	    }
 }

@@ -19,34 +19,45 @@
 	   
    		<LinearLayout
    		    android:orientation="horizontal"
-   		    android:layout_width="wrap_content"
+   		    android:layout_width="match_parent"
    		    android:layout_height="wrap_content"
    		    android:layout_below="@id/addGradeName">
 			<Spinner
 			      android:id="@+id/addCategory"
 			      android:layout_width="0dp"
-			      android:layout_height="wrap_content"
-				  android:layout_weight=".7"
+			      android:layout_height="50dp"
+				  android:layout_weight=".5"
 				  android:layout_marginRight="10dp"
 				  android:layout_marginLeft="10dp" />
 			
 			<EditText
+			       android:id="@+id/topNumber"
 			       android:layout_width="0dp"
-			       android:layout_weight=".20"
-			       android:layout_height="wrap_content"
+			       android:layout_weight=".23"
+			       android:layout_height="50dp"
 				   android:layout_marginRight="2dp"
 				   android:layout_marginLeft="2dp"
 				   android:layout_marginTop="10dp"
 				   android:inputType="number" />
-	       <TextView
+			<TextView
 			       android:layout_width="0dp"
-			       android:layout_weight=".10"
-			       android:layout_height="wrap_content"
-			       android:text="@string/percentage"
+			       android:layout_weight=".04"
+			       android:layout_height="50dp"
+			       android:text="@string/outOf"
 			   	   android:layout_marginRight="10dp"
 			   	   android:layout_marginLeft="2dp"
 			   	   android:layout_marginTop="10dp" 
-			   	   android:textSize="20sp"/>
+			   	   android:textSize="30sp"/>
+			<EditText
+			    	android:id="@+id/bottomNumber"
+			       android:layout_width="0dp"
+			       android:layout_weight=".23"
+			       android:layout_height="50dp"
+				   android:layout_marginRight="2dp"
+				   android:layout_marginLeft="2dp"
+				   android:layout_marginTop="10dp"
+				   android:inputType="number" />
+
 		 </LinearLayout>
 
     
