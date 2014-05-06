@@ -27,6 +27,7 @@
     <string name="grade">Assignment 1</string>
     <string name="addGradeName">Assignment Name</string>
     <string name="editGrade">Edit</string>
+    <string name="editGradeTitle">Edit Grade</string>
     <string name="deleteGrade">Delete</string>
     
     <string name="addGradeButton">Submit</string>

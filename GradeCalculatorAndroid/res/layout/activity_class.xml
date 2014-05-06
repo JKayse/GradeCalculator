@@ -25,14 +25,24 @@
 	   	android:layout_marginRight="10dp"
 	   	android:layout_marginLeft="10dp"
 	   	android:layout_marginTop="10dp" />
-	
+	<TextView
+        android:id="@+id/currentPercentage"
+        android:textSize="30sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/addProfessor"
+        android:layout_below="@id/professor"
+	   	android:layout_marginRight="10dp"
+	   	android:layout_marginLeft="10dp"
+	   	android:layout_marginTop="10dp" />
+   
 	 <TextView 
 	    android:id="@+id/grading"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:text="@string/grading"
 	    android:textSize="30sp"
-	    android:layout_below="@id/professor"
+	    android:layout_below="@id/currentPercentage"
 	    android:layout_marginLeft="10dp"
 	    android:layout_marginTop="10dp" />
 	 

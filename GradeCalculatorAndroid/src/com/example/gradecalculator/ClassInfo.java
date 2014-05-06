@@ -203,6 +203,7 @@ public class DownloadJsonList extends AsyncTask<String, Void, Category[]>{
 		Scanner scanner;
 		Context context;
 		String jsonresults;
+		double totalGrade;
 
 		//Constructor for the subclass to take in the proper context.
 		public DownloadJsonList(Context context){
@@ -238,6 +239,7 @@ public class DownloadJsonList extends AsyncTask<String, Void, Category[]>{
 					JSONArray values = json.getJSONArray("Categories");
 					categories = new Category[values.length()];
 					spinnerArray =  new ArrayList<String>();
+					double calcCategory =0;
 					for(int i = 0; i < values.length(); i++){
 						JSONObject categoryItem = values.getJSONObject(i);
 						String categoryId = categoryItem.getString("categoryId");
@@ -251,6 +253,8 @@ public class DownloadJsonList extends AsyncTask<String, Void, Category[]>{
 						categories[i].setPercentage(categoryPercentage);
 						JSONArray gradeItems = categoryItem.getJSONArray("grades");
 						Grade[] grades = new Grade[gradeItems.length()];
+						double totalGrade = 0;
+						
 						for(int j = 0; j < gradeItems.length(); j++){
 							JSONObject gradeItem = gradeItems.getJSONObject(j);
 							String gradeName = gradeItem.getString("gradeName");
@@ -260,10 +264,16 @@ public class DownloadJsonList extends AsyncTask<String, Void, Category[]>{
 							grades[j].setGradeName(gradeName);
 							grades[j].setPercentage(gradePercentage);
 							grades[j].setGradeId(gradeId);
+							totalGrade += Double.parseDouble(gradePercentage);
 						}
+						if(gradeItems.length()>0){
+							calcCategory += (double) (totalGrade/(gradeItems.length()*100)) * (double) Integer.parseInt(categoryPercentage);
+						}
+						
 						categories[i].setGrades(grades);
 						
 					}
+					totalGrade = calcCategory;
 				}
 			} catch (IOException | JSONException  e) {
 				Log.e("JLK", "URL is bad");
@@ -278,6 +288,8 @@ public class DownloadJsonList extends AsyncTask<String, Void, Category[]>{
 			//Sets the adapter to the list view in the activity_main file.
 			//Also makes the progress bar disappear.
 			//progress.setVisibility(View.GONE);
+			TextView currentGrade = (TextView) findViewById(R.id.currentPercentage);
+			currentGrade.setText("Current Grade: " + totalGrade +"%");
 			secondAdapter = new CategoriesAdapter(context, result);
 			categoriesList.setAdapter(secondAdapter);
 			super.onPostExecute(result);
