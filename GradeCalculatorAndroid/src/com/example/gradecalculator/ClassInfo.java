@@ -49,7 +49,7 @@ public class ClassInfo extends ActionBarActivity{
 	String mainURL = "http://54.200.94.110/GradeCalculator/api/index.php/Class/";
 	DownloadJsonList task = new DownloadJsonList(this);
 	String classId;
-	Integer current;
+	public static Integer current;
 	ExpandableListView categoriesList;
 	ArrayList<String> spinnerArray;
 	Category[] categories;
@@ -390,6 +390,9 @@ public class DownloadJsonList extends AsyncTask<String, Void, Category[]>{
 		protected void onPostExecute(String response) {
 			CharSequence text = "";
 			Log.d("JLK", response);
+			Intent intent = new Intent();
+			setResult(Activity.RESULT_OK , intent);
+			finish();
 			//Eventually add check for repeated class name.
 			/*if(response.equals("error_username")){
 				
@@ -406,11 +409,11 @@ public class DownloadJsonList extends AsyncTask<String, Void, Category[]>{
 	     }
 	}
 	
+	
+	
 	public void deleteClass(View view){
 		new deleteClassRequest(thisContext).execute(classId);
-		Intent intent = new Intent();
-		setResult(Activity.RESULT_OK , intent);
-		finish();
 	}
+	
 
 }

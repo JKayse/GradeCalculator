@@ -6,9 +6,6 @@
     tools:ignore="MergeRootFrame"
     android:background="@drawable/grading_container"
     android:layout_marginBottom="5dp">
-    
-    
-	<!-- Holds the image. -->	
 	<TextView
 	    android:id="@+id/gradeName"
 	    android:layout_width="wrap_content"
@@ -18,17 +15,44 @@
 	    android:paddingTop="10dp"
 	    android:textSize="25sp"
 	    android:paddingLeft="10dp" />
-	
-	<TextView
-	    android:id="@+id/percentage"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_alignParentRight="true"
-	    android:text="@string/score"
-	    android:textSize="25sp"
-	    android:paddingTop="10dp"
-	    android:paddingRight="10dp"/>
-
+	<RelativeLayout
+        android:id="@+id/notSwiped"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" >
+		<TextView
+		    android:id="@+id/percentage"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:text="@string/score"
+		    android:textSize="25sp"
+		    android:paddingTop="10dp"
+		    android:paddingRight="10dp"/>
+	</RelativeLayout>
+	<RelativeLayout
+        android:id="@+id/swiped"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" 
+        android:visibility="gone" >		
+		<Button
+		    android:id="@+id/deleteGrade"
+		    android:layout_width="80dp"
+		    android:layout_height="50dp"
+		    android:layout_alignParentRight="true"
+		    android:text="@string/deleteGrade"
+		    android:textSize="20sp"
+		    android:paddingTop="10dp"
+		    android:paddingRight="10dp"/>
+		<Button
+		    android:id="@+id/editGrade"
+		    android:layout_width="80dp"
+		    android:layout_height="wrap_content"
+		    android:text="@string/editGrade"
+		    android:layout_toLeftOf="@id/deleteGrade"
+		    android:textSize="20sp"
+		    android:paddingTop="10dp"
+		    android:paddingRight="10dp"/>
+	</RelativeLayout>
 	
 	
 

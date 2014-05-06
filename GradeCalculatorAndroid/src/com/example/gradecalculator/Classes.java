@@ -29,6 +29,8 @@ public class Classes extends ActionBarActivity{
 	DownloadJson task = new DownloadJson(this);
 	ListView list;
 	public static final int CLASS_REQUEST = 1753;
+	public static Activity activity;
+	
 	
 	
 	@Override
@@ -37,6 +39,7 @@ public class Classes extends ActionBarActivity{
 		setContentView(R.layout.activity_classes);
 		task.execute(mainURL);
 		list = (ListView) findViewById(R.id.classList);
+		activity = this;
 		
 		TextView addClass = (TextView) findViewById(R.id.classTitle);
 		

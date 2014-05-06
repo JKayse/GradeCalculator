@@ -26,6 +26,8 @@
     <string name="score">100%</string>
     <string name="grade">Assignment 1</string>
     <string name="addGradeName">Assignment Name</string>
+    <string name="editGrade">Edit</string>
+    <string name="deleteGrade">Delete</string>
     
     <string name="addGradeButton">Submit</string>
     <string name="cancelAddGrade">Cancel</string>
