@@ -1,3 +1,4 @@
+<!--  Layout to add a class. -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
@@ -17,6 +18,7 @@
 	    android:layout_marginLeft="10dp"
 	    android:layout_marginTop="10dp" />
     
+	<!--  Stores the name of the class. -->
    <EditText
         android:id="@+id/addClassName"
         android:textColor="#FFF"
@@ -30,6 +32,7 @@
 	   	android:layout_marginLeft="10dp"
 	   	android:layout_marginTop="10dp" />
 	   
+   <!--  View for the name of the professor. -->
 	<EditText
        android:id="@+id/addProfessor"
        android:textColor="#FFF"
@@ -42,6 +45,7 @@
 	   android:layout_marginRight="10dp"
 	   android:layout_marginLeft="10dp" />
 	
+	<!--  Name of next section with drawable to add more categories. -->
 	 <TextView 
 	    android:id="@+id/addGrading"
 	    android:textColor="#ECECEC"
@@ -55,6 +59,7 @@
 	    android:layout_marginLeft="10dp"
 	    android:layout_marginTop="10dp" />
 	 
+	 <!--  Scroll view containing the name of a category and the percentage.-->
 	 <ScrollView 
 	     android:id="@+id/scrollGrading"
 	     android:layout_width="match_parent"
@@ -109,6 +114,7 @@
 	     
 	 </ScrollView>
 	 
+	 <!--  Layout containing the buttons to the submit the new class or cancel. -->
 	 <LinearLayout 
 	     android:orientation="horizontal"
 	     android:layout_width="match_parent"

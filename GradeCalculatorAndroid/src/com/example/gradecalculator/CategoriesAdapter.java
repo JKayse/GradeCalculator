@@ -36,12 +36,16 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+
+//Class to handle the expandable list view.
 public class CategoriesAdapter extends BaseExpandableListAdapter{
 
 	LayoutInflater inflater;
 	Context context;
 	Category[] categories;
 
+	
+	//Class constructor that takes in the data and the context.
 	CategoriesAdapter(Context context, Category[] data){
 		super();
 		this.context = context;
@@ -49,10 +53,12 @@ public class CategoriesAdapter extends BaseExpandableListAdapter{
 		inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
+	//Gets the child at a position.
 	public Grade getChild(int groupPosition, int childPosition) {
         return categories[groupPosition].getGrade(childPosition);
     }
 	
+	//Gets the child view and inflates it.
 	public View getChildView(final int groupPosition, final int childPosition,
             boolean isLastChild, View convertView, ViewGroup parent) {
         final Grade currentGrade = getChild(groupPosition, childPosition);
@@ -68,12 +74,16 @@ public class CategoriesAdapter extends BaseExpandableListAdapter{
         
 		Button deleteGrade = (Button) convertView.findViewById(R.id.deleteGrade);
 		Button editGrade = (Button) convertView.findViewById(R.id.editGrade);
+		
+		//Creates a click listener to delete the grade.
 		deleteGrade.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
 				deleteGrade(currentGrade.getGradeId());
 			}
 		});
+		
+		//Creaates a click listener to edit the grade.
 		editGrade.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
@@ -84,6 +94,8 @@ public class CategoriesAdapter extends BaseExpandableListAdapter{
         gradeName.setText(currentGrade.getGradeName());
         gradePercentage.setText(currentGrade.getPercentage()+"%");
         
+        
+        //Adds a swipe listener on the item that then switches the view of the grade.
         final SwipeDetector swipeDetector = new SwipeDetector();
         convertView.setOnTouchListener(swipeDetector);
         convertView.setOnClickListener(new OnClickListener(){
@@ -109,6 +121,8 @@ public class CategoriesAdapter extends BaseExpandableListAdapter{
         return convertView;
 	}
 	
+	
+	//Gets the categories and inflates them.
 	public View getGroupView(int groupPosition, boolean isExpanded,
 	            View convertView, ViewGroup parent) {
 			Category temp = getGroup(groupPosition);
@@ -124,46 +138,56 @@ public class CategoriesAdapter extends BaseExpandableListAdapter{
 	        return convertView;
 	    }
 
+	//Returns the number of categories.
 	@Override
 	public int getGroupCount() {
 		return categories.length;
 	}
 
+	//Returns the number of grades for a certain category.
 	@Override
 	public int getChildrenCount(int groupPosition) {
 		return categories[groupPosition].getGrades().length;
 	}
 
+	//Returns the category at a certain position.
 	@Override
 	public Category getGroup(int groupPosition) {
 		return categories[groupPosition];
 	}
 
+	//Returns the id of the category.
 	@Override
 	public long getGroupId(int groupPosition) {
 		return groupPosition;
 	}
 
+	//Returns the id of the grade.
 	@Override
 	public long getChildId(int groupPosition, int childPosition) {
 		return childPosition;
 	}
 
+	//Makes the each id is stable...
 	@Override
 	public boolean hasStableIds() {
 		return true;
 	}
 
+	
+	//Says that you can select a child.
 	@Override
 	public boolean isChildSelectable(int groupPosition, int childPosition) {
 		return true;
 	}
 	
-	
+	//Function to the delete the grade.
 	public void deleteGrade(String gradeId){
 		new deleteGradeRequest(context).execute(gradeId);
 	}
 	
+	
+	//Function to show the alert dialog for editing a grade.
 	public void editGrade(final Grade grade){
 		Log.d("JLK", "test edit grade button");
 			final AlertDialog.Builder dialog = new AlertDialog.Builder(context);
@@ -179,7 +203,7 @@ public class CategoriesAdapter extends BaseExpandableListAdapter{
 			final Button cancelSubmit = (Button) inflateThis.findViewById(R.id.cancelAddGrade);
 
 
-
+			//Adds a click listener to the alert to hide the alert.
 			final AlertDialog dialogFinal = dialog.create();
 			dialogFinal.show();
 			cancelSubmit.setOnClickListener(new OnClickListener(){
@@ -188,6 +212,8 @@ public class CategoriesAdapter extends BaseExpandableListAdapter{
 					dialogFinal.dismiss();
 				}
 			});
+			
+			//Adds a click listener to submit the new changes for the edit. Checks for proper values.
 			submitGrade.setOnClickListener(new OnClickListener(){
 				@Override
 				public void onClick(View v) {
@@ -212,6 +238,7 @@ public class CategoriesAdapter extends BaseExpandableListAdapter{
 			        	Double finalScore = (double)(startGrade)/(double) (endGrade) * 100;
 			        	String totalScore = String.valueOf(finalScore);
 			        	Log.d("JLK", totalScore);
+			        	//Closes the dialog and sends the data to an async task.
 			        	dialogFinal.dismiss();
 			        	new editGradeRequest(context).execute(newGradeName, totalScore, grade.getGradeId());
 					}
@@ -219,6 +246,7 @@ public class CategoriesAdapter extends BaseExpandableListAdapter{
 			});			
 	}
 	
+	//Async task to delete the certain grade.
 	class deleteGradeRequest extends AsyncTask<String, Void, String>{
 		Context context;
 	    private deleteGradeRequest(Context context) {
@@ -264,7 +292,7 @@ public class CategoriesAdapter extends BaseExpandableListAdapter{
 			CharSequence text = "";
 			Log.d("JLK", response);
 
-	
+			//Refreshes the activity when it finishes.
 			Intent intent = new Intent();
 			intent.setAction("com.example.gradecalculator.REFRESH");
 			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -273,22 +301,11 @@ public class CategoriesAdapter extends BaseExpandableListAdapter{
 			intent.putIntegerArrayListExtra(ClassInfo.CLASS_KEY, classNumber);
 			ClassInfo.activity.finish();
 			context.startActivity(intent);
-			//Eventually add check for repeated class name.
-			/*if(response.equals("error_username")){
-				
-				text = "This username already exists.";
-				
-				
-			}else if(response.equals("error_email")){
-				text = "This email already exists.";
-			}else{
-				 text = "Success! Login to continue";
-				
-			}*/
 			return;
 	     }
 	}
 
+	//Async task for editing a grade.
 	class editGradeRequest extends AsyncTask<String, Void, String>{
 		Context context;
 	    private editGradeRequest(Context context) {
@@ -336,7 +353,7 @@ public class CategoriesAdapter extends BaseExpandableListAdapter{
 			CharSequence text = "";
 			Log.d("JLK", response);
 
-	
+			//Refreshes the activity when finished.
 			Intent intent = new Intent();
 			intent.setAction("com.example.gradecalculator.REFRESH");
 			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -345,18 +362,6 @@ public class CategoriesAdapter extends BaseExpandableListAdapter{
 			intent.putIntegerArrayListExtra(ClassInfo.CLASS_KEY, classNumber);
 			ClassInfo.activity.finish();
 			context.startActivity(intent);
-			//Eventually add check for repeated class name.
-			/*if(response.equals("error_username")){
-				
-				text = "This username already exists.";
-				
-				
-			}else if(response.equals("error_email")){
-				text = "This email already exists.";
-			}else{
-				 text = "Success! Login to continue";
-				
-			}*/
 			return;
 	     }
 	}

@@ -26,6 +26,8 @@ import android.view.View.OnClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
+
+//A list view of all the classes.
 public class Classes extends ActionBarActivity{
 	String mainURL = "http://54.200.94.110/GradeCalculator/api/index.php/Classes/";
 	DownloadJson task = new DownloadJson(this);
@@ -49,6 +51,8 @@ public class Classes extends ActionBarActivity{
 		
 		TextView addClass = (TextView) findViewById(R.id.classTitle);
 		
+		
+		//Adds a click listener for adding a new class for a user.
 		addClass.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
@@ -57,6 +61,8 @@ public class Classes extends ActionBarActivity{
 		});
 	}
 	
+	
+	//Starts the new intent to add a class.
 	public void addClass(View view){
     	
     	Intent newClass = new Intent(this,AddClass.class );
@@ -64,6 +70,7 @@ public class Classes extends ActionBarActivity{
     	
     }
 	
+	//Refreshes the activity if it gets a result.
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data){
 		if(requestCode == CLASS_REQUEST && resultCode == Activity.RESULT_OK){
@@ -85,7 +92,7 @@ public class Classes extends ActionBarActivity{
 	}
 	
 	
-	
+	//Sets all the functions for each menu item.
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will
@@ -107,6 +114,8 @@ public class Classes extends ActionBarActivity{
 		return super.onOptionsItemSelected(item);
 	}
 	
+	
+	//Parses all the json for all the class information.
 	public class DownloadJson extends AsyncTask<String, Void, ClassItem[]>{
 		
 		//The list of variables used for this class.
@@ -177,11 +186,8 @@ public class Classes extends ActionBarActivity{
 			return classes;
 		}
 		
-		
+		//Sets the list view once it gets all the information.
 		protected void onPostExecute(ClassItem[] result){
-			//Sets the adapter to the list view in the activity_main file.
-			//Also makes the progress bar disappear.
-			//progress.setVisibility(View.GONE);
 			adapter = new ClassesAdapter(context, classes);
 			list.setAdapter(adapter);
 		}

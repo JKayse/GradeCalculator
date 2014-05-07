@@ -2,6 +2,7 @@ package com.example.gradecalculator;
 
 
 //Class from stack overflow author:Pinhassi and Xavi
+//Used to detect swipe motions on the screen.
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;

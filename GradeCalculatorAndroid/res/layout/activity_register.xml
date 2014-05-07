@@ -1,3 +1,4 @@
+<!--  Layout for creating an account. -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
@@ -7,6 +8,7 @@
     tools:ignore="MergeRootFrame"
     android:background="#012060" >
 
+    <!--  Holds the future username. -->
    <EditText
         android:id="@+id/username_placeholder"
         android:layout_width="match_parent"
@@ -20,7 +22,7 @@
 	   	android:layout_marginLeft="10dp"
 	   	android:layout_marginTop="30dp" />
 
-
+	<!--  Password field. -->
    <EditText
        android:id="@+id/password_placeholder"
        android:layout_width="match_parent"
@@ -33,8 +35,8 @@
 	   android:layout_below="@id/username_placeholder"
 	   android:layout_marginRight="10dp"
 	   android:layout_marginLeft="10dp" />
-	   
-<EditText
+	   <!--  Confirm password field. -->
+	  <EditText
        android:id="@+id/confirm_placeholder"
        android:layout_width="match_parent"
        android:layout_height="wrap_content" 
@@ -47,7 +49,7 @@
 	   android:layout_marginRight="10dp"
 	   android:layout_marginLeft="10dp" />
     
-      
+      <!--  Button to sign up. -->
   	<Button
        android:id="@+id/signUp"
        android:layout_width="match_parent"

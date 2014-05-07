@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-
+//Adapter for the list view of all the classes.
 public class ClassesAdapter extends ArrayAdapter<ClassItem>{
 
 	public static ClassItem[] classes;
@@ -25,7 +25,7 @@ public class ClassesAdapter extends ArrayAdapter<ClassItem>{
 	    this.context = context;
 	}
 
-	
+	//Gets the view at a position and inflates it if needed.
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		 View view = convertView;
 	
@@ -37,6 +37,8 @@ public class ClassesAdapter extends ArrayAdapter<ClassItem>{
 		
 		 TextView className = (TextView)view.findViewById(R.id.className);
 		 TextView professor = (TextView)view.findViewById(R.id.professor);
+		 
+		 //Sets a click listener when you click on a class. Starts an intent with the class information.
 		 view.setOnClickListener(new OnClickListener(){
 				@Override
 				public void onClick(View v) {

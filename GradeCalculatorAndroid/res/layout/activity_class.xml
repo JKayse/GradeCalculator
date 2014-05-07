@@ -1,3 +1,4 @@
+<!--  Layout for a specific class. -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
@@ -7,6 +8,7 @@
     tools:ignore="MergeRootFrame"
     android:background="#012060">
 
+    <!--  Stores the class name. -->
     <TextView 
 	    android:id="@+id/className"
 	    android:layout_width="wrap_content"
@@ -17,6 +19,7 @@
 	    android:layout_marginLeft="10dp"
 	    android:layout_marginTop="10dp" />
     
+    <!--  Stores the name of the professor. -->
    <TextView
         android:id="@+id/professor"
         android:textSize="25sp"
@@ -28,6 +31,8 @@
 	   	android:layout_marginRight="10dp"
 	   	android:layout_marginLeft="10dp"
 	   	android:layout_marginTop="10dp" />
+	
+	<!--  View for the current grade in the class. -->
 	<TextView
         android:id="@+id/currentPercentage"
         android:textSize="25sp"
@@ -40,6 +45,7 @@
 	   	android:layout_marginLeft="10dp"
 	   	android:layout_marginTop="10dp" />
    
+	<!--  Name of the following section. -->
 	 <TextView 
 	    android:id="@+id/grading"
 	    android:layout_width="wrap_content"
@@ -51,6 +57,7 @@
 	    android:layout_marginLeft="10dp"
 	    android:layout_marginTop="10dp" />
 	 
+	 <!--  Expandable list view for the categories and grades. -->
 	 <ExpandableListView 
 	     android:id="@+id/scrollGrading"
 	     android:layout_width="match_parent"
@@ -62,6 +69,7 @@
 
 	 </ExpandableListView>
 	 
+	 <!--  Contains the buttons for adding a grade and deleting a class. -->
 	 <LinearLayout 
 	     android:orientation="horizontal"
 	     android:layout_width="match_parent"

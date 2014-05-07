@@ -38,6 +38,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//A simple about page to explain the app.
 public class AboutPage extends ActionBarActivity{
 
 	private SharedPreferences sharedPref;
@@ -60,7 +61,7 @@ public class AboutPage extends ActionBarActivity{
 	}
 	
 	
-	
+	//Creates the menu bar.
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will

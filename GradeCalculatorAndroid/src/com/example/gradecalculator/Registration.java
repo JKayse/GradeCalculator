@@ -29,7 +29,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
-
+//Class to register an account.
 public class Registration extends ActionBarActivity{
 	EditText username;
 	EditText password;
@@ -42,6 +42,8 @@ public class Registration extends ActionBarActivity{
 		
 		Button signUp = (Button) findViewById(R.id.signUp);
 		
+		
+		//Adds a click listener to the sign up button.
 		signUp.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
@@ -76,6 +78,7 @@ public class Registration extends ActionBarActivity{
 		return super.onOptionsItemSelected(item);
 	}
 	
+	//Function to make sure the input fields are set properly.
 	public void registerAttempt(View view){
 	   	 username = (EditText)findViewById(R.id.username_placeholder);
 	   	 password = (EditText)findViewById(R.id.password_placeholder);
@@ -105,13 +108,13 @@ public class Registration extends ActionBarActivity{
 			 return;
 		 }
 	   	 
-	   	
+	   	//Calls the async task if everything is set properly.
 	   	  new registerRequest(this).execute(newUsername, newPassword);
 	   	
 	   }
 		
 		
-		
+		//Async task to create an account on the database.
 		class registerRequest extends AsyncTask<String, Void, String>{
 	    	Context context;
 	        private registerRequest(Context context) {
@@ -162,10 +165,12 @@ public class Registration extends ActionBarActivity{
 			protected void onPostExecute(String response) {
 				CharSequence text = "";
 				Log.d("JLK", response);
+				//Returns an error if the username if already used.
 				if(response.equals("error_username")){
 					username.setError("This username already exists.");
 					return;				
 				}else{
+					//Tells you to login if successful.
 					text = "Success! Login to continue";
 					int duration = Toast.LENGTH_LONG;
 					Toast toast = Toast.makeText(context, text, duration);

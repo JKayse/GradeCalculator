@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--  Layout when creating a class.-->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+    <!--  Name of the category. -->
     <EditText
     android:layout_width="0dp"
     android:layout_weight=".70"
@@ -15,6 +17,7 @@
 	android:layout_marginRight="2dp"
 	android:layout_marginLeft="10dp"
 	android:layout_marginTop="10dp" />
+    <!--  Percentage of the category. -->
     <EditText
     android:layout_width="0dp"
     android:layout_weight=".20"

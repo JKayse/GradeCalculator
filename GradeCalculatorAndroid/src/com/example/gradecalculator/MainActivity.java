@@ -35,6 +35,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+//Main activity for signing in.
 public class MainActivity extends ActionBarActivity {
 	private SharedPreferences sharedPref;
 	private SharedPreferences.Editor editor;
@@ -50,6 +51,8 @@ public class MainActivity extends ActionBarActivity {
 		Button signIn = (Button) findViewById(R.id.signIn);
 		Button signUp = (Button) findViewById(R.id.signUp);
 		
+		
+		//Click listener to go to the sign up page.
 		signUp.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
@@ -57,6 +60,7 @@ public class MainActivity extends ActionBarActivity {
 			}
 		});
 		
+		//Click listener to sign in.
 		signIn.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
@@ -94,6 +98,7 @@ public class MainActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	//Goes to the register page.
 	public void registerNew(View view){
     	
     	Intent moveToRegister = new Intent(this,Registration.class );
@@ -101,6 +106,7 @@ public class MainActivity extends ActionBarActivity {
     	
     }
 	
+	//Checks for valid input. Then calls an async task.
 	public void loginAttempt(View view){
 	   	 usernameField = (EditText)findViewById(R.id.username_placeholder);
 	   	 passwordField = (EditText)findViewById(R.id.password_placeholder);
@@ -119,6 +125,7 @@ public class MainActivity extends ActionBarActivity {
 	   	new loginRequest(getApplicationContext()).execute(username, password);
    }
 	
+	//Async task to login.
 	class loginRequest extends AsyncTask<String, Void, String>{
     	Context context;
         private loginRequest(Context context) {
@@ -167,6 +174,7 @@ public class MainActivity extends ActionBarActivity {
 		@Override
 		protected void onPostExecute(String response) {
 
+			//If any information is wrong it returns with an error.
 			if(response.contentEquals("error_username_doesnt_exists")){
 				usernameField.setError("The username entered does not exist.");
 				return;
@@ -175,7 +183,8 @@ public class MainActivity extends ActionBarActivity {
 				return;
 			}
 			else {
-
+				//If the login ingormation is correct, it goes to the classes page.
+				//Also submits the user id to shared preferences to hold the logged in state.
 				JSONObject back = null;
 				try {
 					back = new JSONObject(response);

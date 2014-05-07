@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 
+//An activity called in the beginning. Decides if you're logged in or not.
 public class StartActivity extends Activity{
 	private SharedPreferences sharedPref;
 	private SharedPreferences.Editor editor;
@@ -27,6 +28,7 @@ public class StartActivity extends Activity{
 
                 } finally {
                 	Intent intent;
+                	//If your're logged in go to the class list.
                 	if (sharedPref.contains("user_id")) {
                 		UserInfo temp = UserInfo.getInstance();
                 		Integer id = Integer.parseInt(sharedPref.getString("user_id", ""));
@@ -34,6 +36,7 @@ public class StartActivity extends Activity{
                 		intent = new Intent(StartActivity.this, Classes.class);
                 		
             		} else {
+            			//Else go to the page to login.
             			intent = new Intent(StartActivity.this, MainActivity.class);
             		}
                     startActivity(intent);

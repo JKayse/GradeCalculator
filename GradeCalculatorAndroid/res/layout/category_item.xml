@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--  Container for a category in the expandable list. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,7 +9,7 @@
     android:layout_marginBottom="5dp">
     
     
-	<!-- Holds the image. -->	
+	<!-- Holds the category name. -->	
 	<TextView
 	    android:id="@+id/category"
 	    android:layout_width="0dp"
@@ -21,6 +22,7 @@
 	    android:textSize="25sp"
 	    android:paddingLeft="30dp" />
 	
+	<!--  Percentage of the category. -->
 	<TextView
 	    android:id="@+id/percentage"
 	    android:layout_width="0dp"

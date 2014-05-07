@@ -1,3 +1,4 @@
+<!--  Layout for the list view of classes. -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
@@ -7,6 +8,7 @@
     tools:ignore="MergeRootFrame"
     android:background="#012060">
 
+    <!--  Name of section and drawable for adding a new class. -->
 	<TextView 
 	    android:id="@+id/classTitle"
 	    android:layout_width="wrap_content"
@@ -18,6 +20,8 @@
 	    android:drawablePadding="7dp"
 	    android:drawableRight="@drawable/add_button"
 	    android:layout_marginTop="10dp" />
+	
+	<!--  List view containing the classes. -->
 	<ListView 
 	    android:id="@+id/classList"
 	    android:layout_marginTop="5dp"

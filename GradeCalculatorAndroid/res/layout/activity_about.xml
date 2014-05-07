@@ -1,3 +1,4 @@
+<!--  Layout for the about page. -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
@@ -7,6 +8,7 @@
     tools:ignore="MergeRootFrame"
     android:background="#012060" >
  
+    <!--  The logo. -->
      <ImageView
        android:layout_width="match_parent"
        android:layout_height="100dp"
@@ -15,6 +17,7 @@
        android:contentDescription="@string/app_name"
        android:layout_centerHorizontal="true"
        android:layout_marginTop="15dp" />
+     <!--  Text view that contains information about the app. -->
      <TextView 
          android:layout_margin="10dp"
          android:layout_width="match_parent"

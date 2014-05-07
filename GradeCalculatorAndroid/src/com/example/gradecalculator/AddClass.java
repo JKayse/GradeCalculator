@@ -36,6 +36,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//Class to add a class to a user's account.
 public class AddClass extends ActionBarActivity{
 	private SharedPreferences sharedPref;
 	private SharedPreferences.Editor editor;
@@ -47,6 +48,7 @@ public class AddClass extends ActionBarActivity{
 		sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 		editor = sharedPref.edit();
 		
+		//Click listener to add categories.
 		TextView addCategory = (TextView) findViewById(R.id.addGrading);
 		addCategory.setOnClickListener(new OnClickListener(){
 			@Override
@@ -54,6 +56,8 @@ public class AddClass extends ActionBarActivity{
 				addCategory(v);
 			}
 		});
+		
+		//Click listener for submitting the class.
 		Button submitClass = (Button) findViewById(R.id.submitClass);
 		submitClass.setOnClickListener(new OnClickListener(){
 			@Override
@@ -61,6 +65,8 @@ public class AddClass extends ActionBarActivity{
 				addClass(v);
 			}
 		});
+		
+		//Click listener for canceling adding a class. Just closes the activity.
 		Button cancelClass = (Button) findViewById(R.id.cancelAdd);
 		cancelClass.setOnClickListener(new OnClickListener(){
 			@Override
@@ -70,6 +76,7 @@ public class AddClass extends ActionBarActivity{
 		});
 	}
 	
+	//Function that inflates another layout to add more categories.
 	public void addCategory(View view){
 		LinearLayout categoryList = (LinearLayout) findViewById(R.id.categories);
 		LinearLayout categoryItem = (LinearLayout) getLayoutInflater().inflate(R.layout.category, null);
@@ -77,6 +84,8 @@ public class AddClass extends ActionBarActivity{
     	
     }
 	
+	
+	//Adds the class checking for the right fields.
 	public void addClass(View view){
 		EditText className = (EditText)findViewById(R.id.addClassName);
 	   	EditText professor = (EditText)findViewById(R.id.addProfessor);
@@ -86,6 +95,7 @@ public class AddClass extends ActionBarActivity{
 		String newClassName=className.getText().toString();
 		String newProfessor=professor.getText().toString();
 
+		//Sets an error if the fields are empty.
 	   	if(newClassName.length() == 0){
 	   		className.setError("Enter a class name.");
 			return;
@@ -95,6 +105,7 @@ public class AddClass extends ActionBarActivity{
 			return;
 		}
 	   	
+	   	//Gets all the categories and makes sure the total percentage is 100%.
 	   	Integer totalPercentage = 0;
 	   	JSONArray categoryValues = new JSONArray();
 	   	for(int i=0; i< categoryList.getChildCount(); ++i) {
@@ -137,6 +148,7 @@ public class AddClass extends ActionBarActivity{
 	   		return;
 	   	}
 	   	else{
+	   		//Sends all the information as json to the database.
 	   		JSONObject finalCategories = new JSONObject();
 	   	    try {
 				finalCategories.put("category", categoryValues);
@@ -147,6 +159,7 @@ public class AddClass extends ActionBarActivity{
 				new classRequest(this).execute(newClassName, newProfessor, newCategories);
 				Intent intent = new Intent();
 				setResult(Activity.RESULT_OK , intent);
+				//Ends the activity after it's submitted.
 				finish();
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
@@ -190,6 +203,7 @@ public class AddClass extends ActionBarActivity{
 		return super.onOptionsItemSelected(item);
 	}
 	
+	//Sends the request to the database.
 	class classRequest extends AsyncTask<String, Void, String>{
     	Context context;
         private classRequest(Context context) {
@@ -236,23 +250,10 @@ public class AddClass extends ActionBarActivity{
 	
 		}
 		
-		
 		@Override
 		protected void onPostExecute(String response) {
 			CharSequence text = "";
 			Log.d("JLK", response);
-			//Eventually add check for repeated class name.
-			/*if(response.equals("error_username")){
-				
-				text = "This username already exists.";
-				
-				
-			}else if(response.equals("error_email")){
-				text = "This email already exists.";
-			}else{
-				 text = "Success! Login to continue";
-				
-			}*/
 			return;
 	     }
     }

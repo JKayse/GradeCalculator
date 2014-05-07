@@ -1,3 +1,4 @@
+<!--  Layout for the alert dialog for adding a grade. -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
@@ -6,6 +7,7 @@
     tools:context="com.example.gradecalculator.MainActivity"
     tools:ignore="MergeRootFrame"
     android:background="#4F7EB9">
+	
 	<TextView 
 	    android:id="@+id/addGradeTitle"
 	    android:layout_width="match_parent"
@@ -16,7 +18,7 @@
 	    android:textColor="#ECECEC"
 	    android:paddingLeft="10dp"
 	    android:paddingTop="10dp" />
-    
+   <!--  Edit text to enter the grade name. --> 
    <EditText
         android:id="@+id/addGradeName"
         android:layout_width="match_parent"
@@ -35,6 +37,7 @@
    		    android:layout_height="wrap_content"
    		    android:layout_below="@id/addGradeName"
    		    android:id="@+id/valuesContainer">
+			<!--  Spinner to hold all the categories -->
 			<Spinner
 			      android:id="@+id/addCategory"
 			      android:layout_width="0dp"
@@ -42,7 +45,7 @@
 				  android:layout_weight=".5"
 				  android:layout_marginRight="10dp"
 				  android:layout_marginLeft="10dp" />
-			
+			<!-- Views to calculate the percentage of a grade. -->
 			<EditText
 			       android:id="@+id/topNumber"
 			       android:layout_width="0dp"
@@ -72,6 +75,7 @@
 				   android:inputType="number" />
 
 		 </LinearLayout>
+		 <!--  Layout to hold the buttons to submit the grade or cancel. -->
 		 <LinearLayout 
 	     android:orientation="horizontal"
 	     android:layout_width="match_parent"

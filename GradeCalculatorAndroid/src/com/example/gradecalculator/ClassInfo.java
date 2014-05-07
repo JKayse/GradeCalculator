@@ -47,6 +47,7 @@ import android.widget.ExpandableListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+//Class that holds all the information for a specific class.
 public class ClassInfo extends ActionBarActivity{
 	private SharedPreferences sharedPref;
 	private SharedPreferences.Editor editor;
@@ -72,13 +73,13 @@ public class ClassInfo extends ActionBarActivity{
 		current = classItem.get(0);
 		thisContext = this;
 		activity = this;
-		
 		TextView className = (TextView) findViewById(R.id.className);
 		TextView professor = (TextView) findViewById(R.id.professor);
 		categoriesList = (ExpandableListView) findViewById(R.id.scrollGrading);
 		Button addGrade = (Button) findViewById(R.id.addGrade);
 		Button deleteClass = (Button) findViewById(R.id.deleteClass);
 		
+		//Sets a click listener to add a new grade.
 		addGrade.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
@@ -86,6 +87,7 @@ public class ClassInfo extends ActionBarActivity{
 			}
 		});
 		
+		//Click listener to delete a class.
 		deleteClass.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
@@ -97,9 +99,11 @@ public class ClassInfo extends ActionBarActivity{
 		className.setText(ClassesAdapter.classes[current].getClassName());
 		professor.setText("Professor: " + ClassesAdapter.classes[current].getProfessor());
 		classId = ClassesAdapter.classes[current].getClassId();
+		//Starts a task to get all the information for the specific class.
 		task.execute(mainURL);	
 	}
 	
+	//Shows the alert dialog for adding a grade.
 	public void addGradeShow(View view){
 		final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
 		
@@ -118,18 +122,24 @@ public class ClassInfo extends ActionBarActivity{
 		values.setAdapter(adapter);
 		final AlertDialog dialogFinal = dialog.create();
 		dialogFinal.show();
+		
+		//Adds a click listener to close the dialog.
 		cancelSubmit.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
 				dialogFinal.dismiss();
 			}
 		});
+		
+		//Adds a click listener to submit the new grade. Then closes the dialog.
 		submitGrade.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
 				String newGradeName = gradeName.getText().toString();
 				String newStartScore = startScore.getText().toString();
 				String newEndScore = endScore.getText().toString();
+				
+				//Checks for proper values.
 				if(newGradeName.length() == 0){
 					gradeName.setError("Please enter a name.");
 					return;
@@ -152,6 +162,7 @@ public class ClassInfo extends ActionBarActivity{
 		        	Double finalScore = (double)(startGrade)/(double) (endGrade) * 100;
 		        	String totalScore = String.valueOf(finalScore);
 		        	Log.d("JLK", totalScore);
+		        	//Sends the information to the database, closes the dialog, and refreshes the activity.
 		        	new gradeRequest(thisContext).execute(categoryId, newGradeName, totalScore);
 		        	Intent intent = getIntent();
 					finish();
@@ -194,6 +205,7 @@ public class ClassInfo extends ActionBarActivity{
 		return super.onOptionsItemSelected(item);
 	}
 	
+//Downloads all the information for the specific class.	
 public class DownloadJsonList extends AsyncTask<String, Void, Category[]>{
 		
 		//The list of variables used for this class.
@@ -210,7 +222,7 @@ public class DownloadJsonList extends AsyncTask<String, Void, Category[]>{
 		public DownloadJsonList(Context context){
 			this.context = context;	
 		}
-		
+		//Parses all the json and sets values.
 		protected Category[] doInBackground(String... urls){
 			
 			//Opens up a connection.
@@ -249,13 +261,14 @@ public class DownloadJsonList extends AsyncTask<String, Void, Category[]>{
 						categories[i] = new Category();
 						categories[i].setCategoryId(categoryId);
 						categories[i].setCategoryName(categoryName);
+						//Adds categories to the spinner.
 						spinnerArray.add(categoryName);
 						Log.d("JLK", categoryName);
 						categories[i].setPercentage(categoryPercentage);
 						JSONArray gradeItems = categoryItem.getJSONArray("grades");
 						Grade[] grades = new Grade[gradeItems.length()];
 						double totalGrade = 0;
-						
+						//Adds up all the percentages to calculate the grade.
 						for(int j = 0; j < gradeItems.length(); j++){
 							JSONObject gradeItem = gradeItems.getJSONObject(j);
 							String gradeName = gradeItem.getString("gradeName");
@@ -291,6 +304,7 @@ public class DownloadJsonList extends AsyncTask<String, Void, Category[]>{
 			//Also makes the progress bar disappear.
 			//progress.setVisibility(View.GONE);
 
+			//Calls the expandable list view with the information and sets all the known information.
 			TextView currentGrade = (TextView) findViewById(R.id.currentPercentage);
 			currentGrade.setText("Current Grade: " + String.format("%.2f", totalGrade) +"%");
 			secondAdapter = new CategoriesAdapter(context, result);
@@ -299,6 +313,8 @@ public class DownloadJsonList extends AsyncTask<String, Void, Category[]>{
 		}
 
 	}
+
+	//An async task for adding a grade to the database.
 	class gradeRequest extends AsyncTask<String, Void, String>{
 		Context context;
 	    private gradeRequest(Context context) {
@@ -345,22 +361,11 @@ public class DownloadJsonList extends AsyncTask<String, Void, Category[]>{
 		protected void onPostExecute(String response) {
 			CharSequence text = "";
 			Log.d("JLK", response);
-			//Eventually add check for repeated class name.
-			/*if(response.equals("error_username")){
-				
-				text = "This username already exists.";
-				
-				
-			}else if(response.equals("error_email")){
-				text = "This email already exists.";
-			}else{
-				 text = "Success! Login to continue";
-				
-			}*/
 			return;
 	     }
 	}
 	
+	//Async task to delete the whole class.
 	class deleteClassRequest extends AsyncTask<String, Void, String>{
 		Context context;
 	    private deleteClassRequest(Context context) {
@@ -400,7 +405,7 @@ public class DownloadJsonList extends AsyncTask<String, Void, Category[]>{
 	
 		}
 		
-		
+		//Once the class is deleted it goes back to the list of classes.
 		@Override
 		protected void onPostExecute(String response) {
 			CharSequence text = "";
@@ -408,24 +413,12 @@ public class DownloadJsonList extends AsyncTask<String, Void, Category[]>{
 			Intent intent = new Intent();
 			setResult(Activity.RESULT_OK , intent);
 			finish();
-			//Eventually add check for repeated class name.
-			/*if(response.equals("error_username")){
-				
-				text = "This username already exists.";
-				
-				
-			}else if(response.equals("error_email")){
-				text = "This email already exists.";
-			}else{
-				 text = "Success! Login to continue";
-				
-			}*/
 			return;
 	     }
 	}
 	
 	
-	
+	//Function to call the async task to delete the class.
 	public void deleteClass(View view){
 		new deleteClassRequest(thisContext).execute(classId);
 	}

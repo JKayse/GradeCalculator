@@ -1,3 +1,4 @@
+<!-- Layout containing the sign in and sign up buttons. -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
@@ -7,6 +8,7 @@
     tools:ignore="MergeRootFrame"
     android:background="#012060" >
  
+    <!-- Image of the app. -->
      <ImageView
        android:layout_width="match_parent"
        android:layout_height="100dp"
@@ -16,6 +18,7 @@
        android:layout_centerHorizontal="true"
        android:layout_marginTop="15dp" />
 
+     <!--  View for the username. -->
    <EditText
         android:id="@+id/username_placeholder"
         android:layout_width="match_parent"
@@ -29,7 +32,7 @@
 	   	android:layout_marginTop="10dp"
 	   	android:textColor="#FFF" />
 
-
+	<!--  View for the password. -->
    <EditText
        android:id="@+id/password_placeholder"
        android:layout_width="match_parent"
@@ -42,7 +45,7 @@
 	   android:layout_marginRight="20dp"
 	   android:layout_marginLeft="20dp"
 	   android:textColor="#FFF" />
-   
+   <!--  Button to sign in. -->
    <Button
        android:id="@+id/signIn"
        android:layout_width="match_parent"
@@ -55,7 +58,7 @@
        android:gravity="center" />
    
   
-      
+      <!--  Button to sign up. -->
   	<Button
        android:id="@+id/signUp"
        android:layout_width="match_parent"

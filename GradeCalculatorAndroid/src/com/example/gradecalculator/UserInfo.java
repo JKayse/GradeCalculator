@@ -1,5 +1,6 @@
 package com.example.gradecalculator;
 
+//Holds information abbout a user.
 public class UserInfo {
 
 	private static UserInfo instance = null;
@@ -10,12 +11,15 @@ public class UserInfo {
 	
 	public static UserInfo getInstance() {
 		
+		//Creates an instance for the user.
 		if(instance == null){
 			instance = new UserInfo();
 		}
 		return instance;
 			
 	}
+	
+	//Sets the information
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -26,6 +30,8 @@ public class UserInfo {
 		UserId = userId;
 	}
 	
+	
+	//Retrieves the information used.
 	public String getPassword() {
 		return password;
 	}
