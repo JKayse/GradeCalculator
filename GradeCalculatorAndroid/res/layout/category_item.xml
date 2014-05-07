@@ -1,35 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:ignore="MergeRootFrame"
-    android:background="@drawable/grading_container"
+    android:background="@drawable/category_container"
     android:layout_marginBottom="5dp">
     
     
 	<!-- Holds the image. -->	
 	<TextView
 	    android:id="@+id/category"
-	    android:layout_width="wrap_content"
+	    android:layout_width="0dp"
+	    android:layout_weight=".75"
 	    android:layout_height="wrap_content"
-	    android:layout_alignParentTop="true"
 	    android:text="@string/categoryName"
+	    android:ellipsize="end"
+		android:singleLine="true"
 	    android:paddingTop="10dp"
 	    android:textSize="25sp"
 	    android:paddingLeft="30dp" />
 	
 	<TextView
 	    android:id="@+id/percentage"
-	    android:layout_width="wrap_content"
+	    android:layout_width="0dp"
+	    android:layout_weight=".25"
 	    android:layout_height="wrap_content"
-	    android:layout_alignParentRight="true"
 	    android:text="@string/score"
 	    android:textSize="25sp"
+	    android:gravity="right"
 	    android:paddingTop="10dp"
 	    android:paddingRight="10dp"/>
 
 	
 	
 
-</RelativeLayout>
+</LinearLayout>

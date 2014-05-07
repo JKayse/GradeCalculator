@@ -168,7 +168,6 @@ public class CategoriesAdapter extends BaseExpandableListAdapter{
 		Log.d("JLK", "test edit grade button");
 			final AlertDialog.Builder dialog = new AlertDialog.Builder(context);
 			LayoutInflater inflater = Classes.activity.getLayoutInflater();
-			dialog.setTitle(R.string.editGradeTitle);
 			View inflateThis = inflater.inflate(R.layout.edit_grade,null);
 			dialog.setView(inflateThis);
 		
@@ -176,17 +175,20 @@ public class CategoriesAdapter extends BaseExpandableListAdapter{
 			gradeName.setText(grade.getGradeName());
 			final EditText startScore = (EditText) inflateThis.findViewById(R.id.topNumber);
 			final EditText endScore = (EditText) inflateThis.findViewById(R.id.bottomNumber);
-			dialog.setPositiveButton(R.string.cancelAddGrade, new DialogInterface.OnClickListener() {
-		           public void onClick(DialogInterface dialog, int id) {
-		               //add function for adding grade create an async task
-		           }
-			});
-			dialog.setNegativeButton(R.string.addGradeButton, null);
+			final Button submitGrade = (Button) inflateThis.findViewById(R.id.addGrade);
+			final Button cancelSubmit = (Button) inflateThis.findViewById(R.id.cancelAddGrade);
+
 
 
 			final AlertDialog dialogFinal = dialog.create();
 			dialogFinal.show();
-			dialogFinal.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener(new View.OnClickListener(){
+			cancelSubmit.setOnClickListener(new OnClickListener(){
+				@Override
+				public void onClick(View v) {
+					dialogFinal.dismiss();
+				}
+			});
+			submitGrade.setOnClickListener(new OnClickListener(){
 				@Override
 				public void onClick(View v) {
 					String newGradeName = gradeName.getText().toString();
@@ -214,7 +216,7 @@ public class CategoriesAdapter extends BaseExpandableListAdapter{
 			        	new editGradeRequest(context).execute(newGradeName, totalScore, grade.getGradeId());
 					}
 				}
-			});
+			});			
 	}
 	
 	class deleteGradeRequest extends AsyncTask<String, Void, String>{

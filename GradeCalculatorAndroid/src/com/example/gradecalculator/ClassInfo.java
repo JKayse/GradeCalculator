@@ -104,7 +104,6 @@ public class ClassInfo extends ActionBarActivity{
 		final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
 		
 		LayoutInflater inflater = getLayoutInflater();
-		dialog.setTitle(R.string.addGradeTitle);
 		View inflateThis = inflater.inflate(R.layout.add_grade,null);
 		dialog.setView(inflateThis);
 		
@@ -112,28 +111,20 @@ public class ClassInfo extends ActionBarActivity{
 		final EditText gradeName = (EditText) inflateThis.findViewById(R.id.addGradeName);
 		final EditText startScore = (EditText) inflateThis.findViewById(R.id.topNumber);
 		final EditText endScore = (EditText) inflateThis.findViewById(R.id.bottomNumber);
+		final Button submitGrade = (Button) inflateThis.findViewById(R.id.addGrade);
+		final Button cancelSubmit = (Button) inflateThis.findViewById(R.id.cancelAddGrade);
 		ArrayAdapter<Category> adapter = new ArrayAdapter<Category>(this, android.R.layout.simple_spinner_item, categories);
 	    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		values.setAdapter(adapter);
-		
-		dialog.setPositiveButton(R.string.cancelAddGrade, new DialogInterface.OnClickListener() {
-	           public void onClick(DialogInterface dialog, int id) {
-	               //add function for adding grade create an async task
-	           }
-		});
-		dialog.setNegativeButton(R.string.addGradeButton, null);
-				/*new DialogInterface.OnClickListener() {
-	           public void onClick(DialogInterface dialog, int id) {
-	               //just close the dialog
-	               //add function for adding grade create an async task
-	        	   
-
-	           }
-		});*/
-
 		final AlertDialog dialogFinal = dialog.create();
 		dialogFinal.show();
-		dialogFinal.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener(new View.OnClickListener(){
+		cancelSubmit.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				dialogFinal.dismiss();
+			}
+		});
+		submitGrade.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
 				String newGradeName = gradeName.getText().toString();
@@ -167,12 +158,8 @@ public class ClassInfo extends ActionBarActivity{
 					startActivity(intent);
 					dialogFinal.dismiss();
 				}
-				
-				
-				
 			}
 		});
-    	
     }
 	
 	

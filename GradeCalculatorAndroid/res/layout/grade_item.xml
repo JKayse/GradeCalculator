@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:ignore="MergeRootFrame"
-    android:background="@drawable/grading_container"
-    android:layout_marginBottom="5dp">
+    android:background="@drawable/grade_container"
+    android:layout_marginBottom="5dp"
+    android:orientation="horizontal"
+    android:layout_marginRight="7dp"
+    android:layout_marginLeft="7dp">
 	<TextView
 	    android:id="@+id/gradeName"
-	    android:layout_width="wrap_content"
+	    android:layout_width="0dp"
+	    android:layout_weight=".6"
 	    android:layout_height="wrap_content"
-	    android:layout_alignParentTop="true"
 	    android:text="@string/grade"
+	    android:ellipsize="end"
+		android:singleLine="true"
 	    android:paddingTop="10dp"
 	    android:textSize="25sp"
-	    android:paddingLeft="10dp" />
+	    android:paddingLeft="10dp"
+	     />
 	<RelativeLayout
         android:id="@+id/notSwiped"
+        android:layout_width="0dp"
+	    android:layout_weight=".4"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent" >
+        android:layout_toRightOf="@id/gradeName">
 		<TextView
 		    android:id="@+id/percentage"
 		    android:layout_width="wrap_content"
@@ -31,29 +39,35 @@
 	</RelativeLayout>
 	<RelativeLayout
         android:id="@+id/swiped"
+        android:layout_width="0dp"
+	    android:layout_weight=".4"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent" 
+        android:layout_toRightOf="@id/gradeName"
         android:visibility="gone" >		
 		<Button
 		    android:id="@+id/deleteGrade"
-		    android:layout_width="80dp"
-		    android:layout_height="50dp"
+		    android:layout_width="35dp"
+		    android:layout_height="35dp"
 		    android:layout_alignParentRight="true"
-		    android:text="@string/deleteGrade"
-		    android:textSize="20sp"
+		    android:background="@drawable/delete_icon"
+		    android:layout_centerVertical="true"
+		    android:layout_margin="5dp"
 		    android:paddingTop="10dp"
+		    android:scaleType="fitCenter"
 		    android:paddingRight="10dp"/>
 		<Button
 		    android:id="@+id/editGrade"
-		    android:layout_width="80dp"
-		    android:layout_height="wrap_content"
-		    android:text="@string/editGrade"
+		    android:layout_width="35dp"
+		    android:layout_height="35dp"
+		    android:layout_margin="5dp"
+		    android:layout_centerVertical="true"
+		    android:background="@drawable/edit_icon"
 		    android:layout_toLeftOf="@id/deleteGrade"
-		    android:textSize="20sp"
 		    android:paddingTop="10dp"
+		    android:scaleType="fitCenter"
 		    android:paddingRight="10dp"/>
 	</RelativeLayout>
 	
 	
 
-</RelativeLayout>
+</LinearLayout>

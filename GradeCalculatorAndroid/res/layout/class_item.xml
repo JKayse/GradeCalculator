@@ -4,11 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:ignore="MergeRootFrame"
-    android:background="@drawable/grading_container"
+    android:background="@drawable/class_container"
     android:layout_marginBottom="5dp">
-    
-    
-	<!-- Holds the image. -->	
+
 	<TextView
 	    android:id="@+id/className"
 	    android:layout_width="wrap_content"
@@ -16,7 +14,8 @@
 	    android:layout_alignParentTop="true"
 	    android:text="@string/className"
 	    android:paddingTop="10dp"
-	    android:textSize="18sp"
+	    android:textSize="20sp"
+	    android:textColor="#000"
 	    android:paddingLeft="10dp" />
 	
 	<TextView
@@ -26,6 +25,7 @@
 	    android:layout_below="@id/className"
 	    android:text="@string/addProfessor"
 	    android:textSize="18sp"
+	    android:textColor="#242B24"
 	    android:paddingTop="10dp"
 	    android:paddingLeft="10dp"/>
 

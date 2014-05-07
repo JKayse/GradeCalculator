@@ -22,7 +22,7 @@ public class StartActivity extends Activity{
             public void run() {
                 try {
                     super.run();
-                    sleep(5000);
+                    sleep(2500);
                 } catch (Exception e) {
 
                 } finally {

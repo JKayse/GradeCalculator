@@ -13,14 +13,14 @@
 	    android:layout_height="wrap_content"
 	    android:text="@string/className"
 	    android:textSize="35sp"
-	    android:textColor="#000"
+	    android:textColor="#ECECEC"
 	    android:layout_marginLeft="10dp"
 	    android:layout_marginTop="10dp" />
     
    <TextView
         android:id="@+id/professor"
-        android:textSize="30sp"
-        android:textColor="#FFF"
+        android:textSize="25sp"
+		android:textColor="#ECECEC"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/addProfessor"
@@ -30,8 +30,8 @@
 	   	android:layout_marginTop="10dp" />
 	<TextView
         android:id="@+id/currentPercentage"
-        android:textSize="30sp"
-        android:textColor="#000"
+        android:textSize="25sp"
+        android:textColor="#ECECEC"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/addProfessor"
@@ -45,7 +45,8 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:text="@string/grading"
-	    android:textSize="30sp"
+	    android:textSize="25sp"
+	    android:textColor="#ECECEC"
 	    android:layout_below="@id/currentPercentage"
 	    android:layout_marginLeft="10dp"
 	    android:layout_marginTop="10dp" />
@@ -75,12 +76,14 @@
 	       android:layout_height="wrap_content"
 	       android:layout_marginRight="10dp"
 		   android:layout_marginLeft="10dp" 
+		   android:textColor="#FFF"
 	       android:text="@string/addGrade" 
 	       android:gravity="center"/>
 	     <Button
 	       android:id="@+id/deleteClass"
 	       android:layout_width="0dp"
 	       android:layout_weight=".5"
+	       android:textColor="#FFF"
 	       android:layout_height="wrap_content"
 	       android:layout_marginRight="10dp"
 		   android:layout_marginLeft="10dp" 

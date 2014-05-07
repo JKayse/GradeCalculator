@@ -4,14 +4,25 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     tools:context="com.example.gradecalculator.MainActivity"
-    tools:ignore="MergeRootFrame">
+    tools:ignore="MergeRootFrame"
+    android:background="#4F7EB9">
 
-    
+    <TextView 
+	    android:id="@+id/editGradeTitle"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/editGradeTitle"
+	    android:textSize="25sp"
+	    android:background="#5FFF"
+	    android:textColor="#ECECEC"
+	  	android:paddingTop="10dp"
+	    android:paddingLeft="10dp"/>
    <EditText
         android:id="@+id/addGradeName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/addGradeName"
+        android:layout_below="@id/editGradeTitle"
         android:layout_centerHorizontal="true"
 	   	android:layout_marginRight="10dp"
 	   	android:layout_marginLeft="10dp"
@@ -21,7 +32,8 @@
    		    android:orientation="horizontal"
    		    android:layout_width="match_parent"
    		    android:layout_height="wrap_content"
-   		    android:layout_below="@id/addGradeName">
+   		    android:layout_below="@id/addGradeName"
+   		    android:id="@+id/valuesContainer">
 			<EditText
 			       android:id="@+id/topNumber"
 			       android:layout_width="0dp"
@@ -59,6 +71,37 @@
 				  android:visibility="invisible"/>
 
 		 </LinearLayout>
+		 <LinearLayout 
+	     android:orientation="horizontal"
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:id="@id/buttonContainer"
+	     android:layout_below="@id/valuesContainer"
+	     android:paddingTop="10dp"
+	     android:paddingBottom="10dp">
+	     <Button
+	       android:id="@+id/addGrade"
+	       android:layout_width="0dp"
+	       android:layout_weight=".5"
+	       android:layout_height="40dp"
+	       android:layout_marginRight="10dp"
+		   android:layout_marginLeft="10dp" 
+		   android:background="@drawable/button_item"
+		   android:textColor="#FFF"
+	       android:text="@string/addGradeButton" 
+	       android:gravity="center"/>
+	     <Button
+	       android:id="@+id/cancelAddGrade"
+	       android:layout_width="0dp"
+	       android:layout_weight=".5"
+	       android:textColor="#FFF"
+	       android:layout_height="40dp"
+	       android:layout_marginRight="10dp"
+	       android:background="@drawable/button_item"
+		   android:layout_marginLeft="10dp" 
+	       android:text="@string/cancelAddGrade" 
+	       android:gravity="center"/>
+	 </LinearLayout>
 
     
 </RelativeLayout>

@@ -38,6 +38,8 @@ import android.widget.Toast;
 public class MainActivity extends ActionBarActivity {
 	private SharedPreferences sharedPref;
 	private SharedPreferences.Editor editor;
+	EditText usernameField;
+	EditText passwordField;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -100,20 +102,18 @@ public class MainActivity extends ActionBarActivity {
     }
 	
 	public void loginAttempt(View view){
-	   	 EditText usernameField = (EditText)findViewById(R.id.username_placeholder);
-	   	 EditText passwordField = (EditText)findViewById(R.id.password_placeholder);
+	   	 usernameField = (EditText)findViewById(R.id.username_placeholder);
+	   	 passwordField = (EditText)findViewById(R.id.password_placeholder);
 	   	 
 	   	 String username = usernameField.getText().toString();
 	   	 String password = passwordField.getText().toString();
 	   	 if(username.length() == 0){
-	   		 Toast toast = Toast.makeText(this, "Enter a username.", 5000);
-				 toast.show();
-				 return;
+	   		 usernameField.setError("Enter a username.");
+			 return;
 	   	 }
 	   	 else if(password.length() < 8){
-	   		 Toast toast = Toast.makeText(this, "The password must be at least 8 characters long.", 5000);
-				 toast.show();
-				 return;
+	   		 passwordField.setError("The password must be at least 8 characters long.");
+			 return;
 	   	 }
 	   	
 	   	new loginRequest(getApplicationContext()).execute(username, password);
@@ -168,18 +168,11 @@ public class MainActivity extends ActionBarActivity {
 		protected void onPostExecute(String response) {
 
 			if(response.contentEquals("error_username_doesnt_exists")){
-				
-				CharSequence text = "The username entered does not exist. Try Again.";
-				int duration = Toast.LENGTH_SHORT;
-
-				Toast toast = Toast.makeText(context, text, duration);
-				toast.show();
+				usernameField.setError("The username entered does not exist.");
+				return;
 			} else if(response.contentEquals("null")){
-				CharSequence text = "The password entered was not correct. Try Again.";
-				int duration = Toast.LENGTH_SHORT;
-
-				Toast toast = Toast.makeText(context, text, duration);
-				toast.show();
+				passwordField.setError("The password entered was not correct.");
+				return;
 			}
 			else {
 

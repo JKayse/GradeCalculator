@@ -13,14 +13,17 @@
 	    android:layout_height="wrap_content"
 	    android:text="@string/classes"
 	    android:textSize="35sp"
+	    android:textColor="#ECECEC"
+	    android:layout_marginLeft="7dp"
+	    android:drawablePadding="7dp"
 	    android:drawableRight="@drawable/add_button"
 	    android:layout_marginTop="10dp" />
 	<ListView 
 	    android:id="@+id/classList"
+	    android:layout_marginTop="5dp"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:layout_alignParentBottom="true"
 	    android:layout_below="@id/classTitle"></ListView>
 
-    
 </RelativeLayout>
