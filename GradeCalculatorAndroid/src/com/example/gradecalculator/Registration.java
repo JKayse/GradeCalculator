@@ -15,6 +15,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -68,6 +69,8 @@ public class Registration extends ActionBarActivity{
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.information) {
+			Intent intent = new Intent(this, AboutPage.class);
+			startActivity(intent);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

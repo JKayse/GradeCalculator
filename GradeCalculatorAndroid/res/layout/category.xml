@@ -10,12 +10,14 @@
     android:layout_weight=".70"
     android:layout_height="wrap_content"
     android:hint="@string/category"
+    android:textColor="#FFF"
 	android:layout_marginRight="2dp"
 	android:layout_marginLeft="10dp"
 	android:layout_marginTop="10dp" />
     <EditText
     android:layout_width="0dp"
     android:layout_weight=".20"
+    android:textColor="#FFF"
     android:layout_height="wrap_content"
 	android:layout_marginRight="2dp"
 	android:layout_marginLeft="2dp"
@@ -24,6 +26,7 @@
     <TextView
     android:layout_width="0dp"
     android:layout_weight=".10"
+    android:textColor="#FFF"
     android:layout_height="wrap_content"
     android:text="@string/percentage"
 	android:layout_marginRight="10dp"

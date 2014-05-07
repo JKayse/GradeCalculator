@@ -20,8 +20,10 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -35,11 +37,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class AddClass extends ActionBarActivity{
-
+	private SharedPreferences sharedPref;
+	private SharedPreferences.Editor editor;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_class);
+		sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+		editor = sharedPref.edit();
 		
 		TextView addCategory = (TextView) findViewById(R.id.addGrading);
 		addCategory.setOnClickListener(new OnClickListener(){
@@ -53,6 +59,13 @@ public class AddClass extends ActionBarActivity{
 			@Override
 			public void onClick(View v) {
 				addClass(v);
+			}
+		});
+		Button cancelClass = (Button) findViewById(R.id.cancelAdd);
+		cancelClass.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				finish();
 			}
 		});
 	}
@@ -163,9 +176,15 @@ public class AddClass extends ActionBarActivity{
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.information) {
+			Intent intent = new Intent(this, AboutPage.class);
+			startActivity(intent);
 			return true;
 		}
 		if (id == R.id.signOut) {
+			editor.clear().commit();
+			Intent intent = new Intent(this, MainActivity.class);
+			finish();
+			startActivity(intent);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

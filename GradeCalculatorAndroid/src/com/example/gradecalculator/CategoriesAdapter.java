@@ -269,7 +269,7 @@ public class CategoriesAdapter extends BaseExpandableListAdapter{
 			ArrayList<Integer> classNumber = new ArrayList(1);
 			classNumber.add(ClassInfo.current);	
 			intent.putIntegerArrayListExtra(ClassInfo.CLASS_KEY, classNumber);
-			Classes.activity.finish();
+			ClassInfo.activity.finish();
 			context.startActivity(intent);
 			//Eventually add check for repeated class name.
 			/*if(response.equals("error_username")){
@@ -341,7 +341,7 @@ public class CategoriesAdapter extends BaseExpandableListAdapter{
 			ArrayList<Integer> classNumber = new ArrayList(1);
 			classNumber.add(ClassInfo.current);	
 			intent.putIntegerArrayListExtra(ClassInfo.CLASS_KEY, classNumber);
-			Classes.activity.finish();
+			ClassInfo.activity.finish();
 			context.startActivity(intent);
 			//Eventually add check for repeated class name.
 			/*if(response.equals("error_username")){

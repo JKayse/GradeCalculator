@@ -13,8 +13,10 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -30,12 +32,16 @@ public class Classes extends ActionBarActivity{
 	ListView list;
 	public static final int CLASS_REQUEST = 1753;
 	public static Activity activity;
+	private SharedPreferences sharedPref;
+	private SharedPreferences.Editor editor;
 	
 	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+		editor = sharedPref.edit();
 		setContentView(R.layout.activity_classes);
 		task.execute(mainURL);
 		list = (ListView) findViewById(R.id.classList);
@@ -87,9 +93,15 @@ public class Classes extends ActionBarActivity{
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.information) {
+			Intent intent = new Intent(this, AboutPage.class);
+			startActivity(intent);
 			return true;
 		}
 		if(id == R.id.signOut) {
+			editor.clear().commit();
+			Intent intent = new Intent(this, MainActivity.class);
+			finish();
+			startActivity(intent);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

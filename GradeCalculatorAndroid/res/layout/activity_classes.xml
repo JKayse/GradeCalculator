@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.gradecalculator.MainActivity"
-    tools:ignore="MergeRootFrame">
+    tools:ignore="MergeRootFrame"
+    android:background="#012060">
 
 	<TextView 
 	    android:id="@+id/classTitle"
@@ -12,7 +13,7 @@
 	    android:layout_height="wrap_content"
 	    android:text="@string/classes"
 	    android:textSize="35sp"
-	    android:drawableRight="@drawable/ic_launcher"
+	    android:drawableRight="@drawable/add_button"
 	    android:layout_marginTop="10dp" />
 	<ListView 
 	    android:id="@+id/classList"

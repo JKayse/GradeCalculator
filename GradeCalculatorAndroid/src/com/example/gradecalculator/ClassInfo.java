@@ -29,8 +29,10 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -46,6 +48,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class ClassInfo extends ActionBarActivity{
+	private SharedPreferences sharedPref;
+	private SharedPreferences.Editor editor;
 	String mainURL = "http://54.200.94.110/GradeCalculator/api/index.php/Class/";
 	DownloadJsonList task = new DownloadJsonList(this);
 	String classId;
@@ -53,6 +57,7 @@ public class ClassInfo extends ActionBarActivity{
 	ExpandableListView categoriesList;
 	ArrayList<String> spinnerArray;
 	Category[] categories;
+	public static Activity activity;
 	Context thisContext;
 	
 	public static final String CLASS_KEY = "ClassKey";
@@ -60,10 +65,13 @@ public class ClassInfo extends ActionBarActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_class);
+		sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+		editor = sharedPref.edit();
 		Intent intent = getIntent();
 		ArrayList<Integer> classItem = intent.getIntegerArrayListExtra(CLASS_KEY);
 		current = classItem.get(0);
 		thisContext = this;
+		activity = this;
 		
 		TextView className = (TextView) findViewById(R.id.className);
 		TextView professor = (TextView) findViewById(R.id.professor);
@@ -185,9 +193,15 @@ public class ClassInfo extends ActionBarActivity{
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.information) {
+			Intent intent = new Intent(this, AboutPage.class);
+			startActivity(intent);
 			return true;
 		}
 		if(id == R.id.signOut) {
+			editor.clear().commit();
+			Intent intent = new Intent(this, MainActivity.class);
+			finish();
+			startActivity(intent);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -274,6 +288,7 @@ public class DownloadJsonList extends AsyncTask<String, Void, Category[]>{
 						
 					}
 					totalGrade = calcCategory;
+					
 				}
 			} catch (IOException | JSONException  e) {
 				Log.e("JLK", "URL is bad");
@@ -288,8 +303,9 @@ public class DownloadJsonList extends AsyncTask<String, Void, Category[]>{
 			//Sets the adapter to the list view in the activity_main file.
 			//Also makes the progress bar disappear.
 			//progress.setVisibility(View.GONE);
+
 			TextView currentGrade = (TextView) findViewById(R.id.currentPercentage);
-			currentGrade.setText("Current Grade: " + totalGrade +"%");
+			currentGrade.setText("Current Grade: " + String.format("%.2f", totalGrade) +"%");
 			secondAdapter = new CategoriesAdapter(context, result);
 			categoriesList.setAdapter(secondAdapter);
 			super.onPostExecute(result);

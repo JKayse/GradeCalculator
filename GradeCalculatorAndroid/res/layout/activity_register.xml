@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.gradecalculator.MainActivity"
-    tools:ignore="MergeRootFrame">
+    tools:ignore="MergeRootFrame"
+    android:background="#012060" >
 
    <EditText
         android:id="@+id/username_placeholder"
@@ -12,16 +13,18 @@
         android:layout_height="wrap_content"
         android:hint="@string/username_placeholder"
         android:layout_below="@id/icon"
+        android:textColor="#FFF"
         android:layout_centerHorizontal="true"
 	   	android:layout_marginRight="10dp"
 	   	android:layout_marginLeft="10dp"
-	   	android:layout_marginTop="10dp" />
+	   	android:layout_marginTop="30dp" />
 
 
    <EditText
        android:id="@+id/password_placeholder"
        android:layout_width="match_parent"
-       android:layout_height="wrap_content"      
+       android:layout_height="wrap_content"    
+       android:textColor="#FFF"  
        android:hint="@string/password_placeholder"
        android:inputType="textPassword"
 	   android:layout_centerHorizontal="true"
@@ -32,7 +35,8 @@
 <EditText
        android:id="@+id/confirm_placeholder"
        android:layout_width="match_parent"
-       android:layout_height="wrap_content"      
+       android:layout_height="wrap_content" 
+       android:textColor="#FFF"     
        android:hint="@string/confirm_placeholder"
        android:inputType="textPassword"
 	   android:layout_centerHorizontal="true"
@@ -47,8 +51,11 @@
        android:layout_height="wrap_content"
        android:layout_marginRight="10dp"
 	   android:layout_marginLeft="10dp" 
+	   android:layout_marginTop="20dp" 
        android:text="@string/signUp" 
        android:gravity="center"
+       android:textColor="#F3F3F3"
+       android:background="@drawable/button_item"
        android:layout_below="@id/confirm_placeholder"/>
     
 </RelativeLayout>

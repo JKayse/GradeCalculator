@@ -10,6 +10,9 @@
     <item 
         android:id="@+id/signOut"
         android:title="@string/signOut"
-        android:visible="true" />"
+        android:visible="true" />
+  	<item
+        android:id="@+id/developer"
+        android:title="@string/developer"/>
 
 </menu>

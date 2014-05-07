@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">GradeCalculator</string>
+    <string name="app_name">Athena Grades</string>
     <string name="about">About</string>
     <string name="signOut">Sign Out</string>
+    <string name="developer">Developer: Jordan Kayse</string>
     <string name="username_placeholder">Username</string>
     <string name="password_placeholder">Password</string>
     <string name="confirm_placeholder">Confirm Password</string>  
@@ -34,6 +35,8 @@
     <string name="cancelAddGrade">Cancel</string>
     <string name="addGradeTitle">Add Grade</string>
     <string name="outOf">/</string>
+    <string name="aboutText">Athena Grades is a general grade calculator. Just sign up and start adding classes!
+        To calculate the grade you need on a final, just add it. Then edit the grade and see what happens to the total grade.</string>
 
     
     

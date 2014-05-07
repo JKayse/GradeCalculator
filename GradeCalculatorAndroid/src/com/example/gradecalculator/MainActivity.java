@@ -18,10 +18,13 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -33,11 +36,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
+	private SharedPreferences sharedPref;
+	private SharedPreferences.Editor editor;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+		editor = sharedPref.edit();
 		Button signIn = (Button) findViewById(R.id.signIn);
 		Button signUp = (Button) findViewById(R.id.signUp);
 		
@@ -65,6 +72,10 @@ public class MainActivity extends ActionBarActivity {
 		return true;
 	}
 	
+	@Override
+	public void onBackPressed(){
+	}
+	
 	
 	
 	@Override
@@ -74,6 +85,8 @@ public class MainActivity extends ActionBarActivity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.information) {
+			Intent intent = new Intent(this, AboutPage.class);
+			startActivity(intent);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -189,12 +202,11 @@ public class MainActivity extends ActionBarActivity {
 
 				}
 				
-			
-				
 				UserInfo temp = UserInfo.getInstance();
 		        temp.setUsername(username);
 		        temp.setUserId(ID);
-		        
+		        editor.putString("user_id", Integer.toString(ID));
+		        editor.commit();
 		        Intent toMain = new Intent(context, Classes.class);
 				startActivity(toMain);
 			}

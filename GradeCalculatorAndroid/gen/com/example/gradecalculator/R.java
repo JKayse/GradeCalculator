@@ -981,8 +981,15 @@ containing a value of this type.
         public static final int abc_textfield_searchview_holo_light=0x7f020054;
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
-        public static final int grading_container=0x7f020057;
-        public static final int ic_launcher=0x7f020058;
+        public static final int add=0x7f020057;
+        public static final int add_button=0x7f020058;
+        public static final int add_pressed=0x7f020059;
+        public static final int athena_grades=0x7f02005a;
+        public static final int athena_grades_small=0x7f02005b;
+        public static final int blue_moon=0x7f02005c;
+        public static final int button_item=0x7f02005d;
+        public static final int grading_container=0x7f02005e;
+        public static final int ic_launcher=0x7f02005f;
     }
     public static final class id {
         public static final int action_bar=0x7f05001c;
@@ -1022,6 +1029,7 @@ containing a value of this type.
         public static final int default_activity_button=0x7f050028;
         public static final int deleteClass=0x7f05004b;
         public static final int deleteGrade=0x7f05005c;
+        public static final int developer=0x7f050060;
         public static final int dialog=0x7f05000e;
         public static final int disableHome=0x7f050008;
         public static final int dropdown=0x7f05000f;
@@ -1131,18 +1139,20 @@ containing a value of this type.
         public static final int abc_popup_menu_item_layout=0x7f030014;
         public static final int abc_search_dropdown_item_icons_2line=0x7f030015;
         public static final int abc_search_view=0x7f030016;
-        public static final int activity_add_class=0x7f030017;
-        public static final int activity_class=0x7f030018;
-        public static final int activity_classes=0x7f030019;
-        public static final int activity_main=0x7f03001a;
-        public static final int activity_register=0x7f03001b;
-        public static final int add_grade=0x7f03001c;
-        public static final int category=0x7f03001d;
-        public static final int category_item=0x7f03001e;
-        public static final int class_item=0x7f03001f;
-        public static final int edit_grade=0x7f030020;
-        public static final int grade_item=0x7f030021;
-        public static final int support_simple_spinner_dropdown_item=0x7f030022;
+        public static final int activity_about=0x7f030017;
+        public static final int activity_add_class=0x7f030018;
+        public static final int activity_class=0x7f030019;
+        public static final int activity_classes=0x7f03001a;
+        public static final int activity_main=0x7f03001b;
+        public static final int activity_register=0x7f03001c;
+        public static final int add_grade=0x7f03001d;
+        public static final int category=0x7f03001e;
+        public static final int category_item=0x7f03001f;
+        public static final int class_item=0x7f030020;
+        public static final int edit_grade=0x7f030021;
+        public static final int grade_item=0x7f030022;
+        public static final int start_app=0x7f030023;
+        public static final int support_simple_spinner_dropdown_item=0x7f030024;
     }
     public static final class menu {
         public static final int logged_in=0x7f0c0000;
@@ -1190,37 +1200,39 @@ containing a value of this type.
          */
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000b;
         public static final int about=0x7f0a000e;
-        public static final int addClass=0x7f0a0016;
-        public static final int addGrade=0x7f0a0020;
-        public static final int addGradeButton=0x7f0a0029;
-        public static final int addGradeName=0x7f0a0025;
-        public static final int addGradeTitle=0x7f0a002b;
-        public static final int addGrading=0x7f0a0017;
-        public static final int addProfessor=0x7f0a0019;
+        public static final int aboutText=0x7f0a002e;
+        public static final int addClass=0x7f0a0017;
+        public static final int addGrade=0x7f0a0021;
+        public static final int addGradeButton=0x7f0a002a;
+        public static final int addGradeName=0x7f0a0026;
+        public static final int addGradeTitle=0x7f0a002c;
+        public static final int addGrading=0x7f0a0018;
+        public static final int addProfessor=0x7f0a001a;
         public static final int app_name=0x7f0a000d;
-        public static final int cancelAdd=0x7f0a001d;
-        public static final int cancelAddGrade=0x7f0a002a;
-        public static final int category=0x7f0a001e;
-        public static final int categoryName=0x7f0a0022;
-        public static final int className=0x7f0a001a;
-        public static final int classes=0x7f0a0015;
-        public static final int confirm_placeholder=0x7f0a0012;
-        public static final int deleteClass=0x7f0a0021;
-        public static final int deleteGrade=0x7f0a0028;
-        public static final int editGrade=0x7f0a0026;
-        public static final int editGradeTitle=0x7f0a0027;
-        public static final int grade=0x7f0a0024;
-        public static final int grading=0x7f0a0018;
-        public static final int outOf=0x7f0a002c;
-        public static final int password_placeholder=0x7f0a0011;
-        public static final int percentage=0x7f0a001f;
-        public static final int required=0x7f0a001b;
-        public static final int score=0x7f0a0023;
-        public static final int signIn=0x7f0a0013;
+        public static final int cancelAdd=0x7f0a001e;
+        public static final int cancelAddGrade=0x7f0a002b;
+        public static final int category=0x7f0a001f;
+        public static final int categoryName=0x7f0a0023;
+        public static final int className=0x7f0a001b;
+        public static final int classes=0x7f0a0016;
+        public static final int confirm_placeholder=0x7f0a0013;
+        public static final int deleteClass=0x7f0a0022;
+        public static final int deleteGrade=0x7f0a0029;
+        public static final int developer=0x7f0a0010;
+        public static final int editGrade=0x7f0a0027;
+        public static final int editGradeTitle=0x7f0a0028;
+        public static final int grade=0x7f0a0025;
+        public static final int grading=0x7f0a0019;
+        public static final int outOf=0x7f0a002d;
+        public static final int password_placeholder=0x7f0a0012;
+        public static final int percentage=0x7f0a0020;
+        public static final int required=0x7f0a001c;
+        public static final int score=0x7f0a0024;
+        public static final int signIn=0x7f0a0014;
         public static final int signOut=0x7f0a000f;
-        public static final int signUp=0x7f0a0014;
-        public static final int submitClass=0x7f0a001c;
-        public static final int username_placeholder=0x7f0a0010;
+        public static final int signUp=0x7f0a0015;
+        public static final int submitClass=0x7f0a001d;
+        public static final int username_placeholder=0x7f0a0011;
     }
     public static final class style {
         /** 

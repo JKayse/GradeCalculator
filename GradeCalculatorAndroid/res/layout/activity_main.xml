@@ -4,15 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.gradecalculator.MainActivity"
-    tools:ignore="MergeRootFrame">
+    tools:ignore="MergeRootFrame"
+    android:background="#012060" >
  
      <ImageView
-       android:layout_width="100dp"
+       android:layout_width="match_parent"
        android:layout_height="100dp"
-       android:src="@drawable/ic_launcher" 
+       android:src="@drawable/athena_grades_small" 
        android:id="@+id/icon" 
        android:contentDescription="@string/app_name"
-       android:layout_centerHorizontal="true" />
+       android:layout_centerHorizontal="true"
+       android:layout_marginTop="15dp" />
 
    <EditText
         android:id="@+id/username_placeholder"
@@ -23,7 +25,8 @@
         android:layout_centerHorizontal="true"
 	   	android:layout_marginRight="20dp"
 	   	android:layout_marginLeft="20dp"
-	   	android:layout_marginTop="10dp" />
+	   	android:layout_marginTop="10dp"
+	   	android:textColor="#FFF" />
 
 
    <EditText
@@ -35,15 +38,17 @@
 	   android:layout_centerHorizontal="true"
 	   android:layout_below="@id/username_placeholder"
 	   android:layout_marginRight="20dp"
-	   android:layout_marginLeft="20dp" />
+	   android:layout_marginLeft="20dp"
+	   android:textColor="#FFF" />
    
    <Button
        android:id="@+id/signIn"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:layout_marginRight="20dp"
-	   android:layout_marginLeft="20dp" 
+       android:layout_margin="20dp"
        android:text="@string/signIn" 
+       android:textColor="#F3F3F3"
+       android:background="@drawable/button_item"
        android:layout_below="@id/password_placeholder"
        android:gravity="center" />
    
@@ -54,10 +59,12 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:layout_marginRight="20dp"
+       android:background="@drawable/button_item"
 	   android:layout_marginLeft="20dp" 
+	   android:textColor="#F3F3F3"
        android:text="@string/signUp" 
        android:gravity="center"
-       android:layout_below="@id/signIn"/>
+       android:layout_below="@id/signIn" />
     
 </RelativeLayout>
 

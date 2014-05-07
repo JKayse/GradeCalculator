@@ -4,10 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.gradecalculator.MainActivity"
-    tools:ignore="MergeRootFrame">
+    tools:ignore="MergeRootFrame"
+    android:background="#012060">
 
     <TextView 
 	    android:id="@+id/addClassTitle"
+	    android:textColor="#FFF"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:text="@string/addClass"
@@ -17,6 +19,7 @@
     
    <EditText
         android:id="@+id/addClassName"
+        android:textColor="#FFF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/className"
@@ -28,6 +31,7 @@
 	   
 	<EditText
        android:id="@+id/addProfessor"
+       android:textColor="#FFF"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"      
        android:hint="@string/addProfessor"
@@ -38,6 +42,7 @@
 	
 	 <TextView 
 	    android:id="@+id/addGrading"
+	    android:textColor="#FFF"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:text="@string/addGrading"
@@ -67,6 +72,7 @@
 		         <EditText
 			        android:layout_width="0dp"
 			        android:layout_weight=".70"
+			        android:textColor="#FFF"
 			        android:layout_height="wrap_content"
 			        android:hint="@string/category"
 				   	android:layout_marginRight="2dp"
@@ -75,6 +81,7 @@
 		         <EditText
 			        android:layout_width="0dp"
 			        android:layout_weight=".20"
+			        android:textColor="#FFF"
 			        android:layout_height="wrap_content"
 				   	android:layout_marginRight="2dp"
 				   	android:layout_marginLeft="2dp"
@@ -83,6 +90,7 @@
 		         <TextView
 			        android:layout_width="0dp"
 			        android:layout_weight=".10"
+			        android:textColor="#FFF"
 			        android:layout_height="wrap_content"
 			        android:text="@string/percentage"
 				   	android:layout_marginRight="10dp"
@@ -107,6 +115,8 @@
 	       android:id="@+id/submitClass"
 	       android:layout_width="0dp"
 	       android:layout_weight=".5"
+	       android:textColor="#FFF"
+	       android:drawable="@drawable/button_item"
 	       android:layout_height="wrap_content"
 	       android:layout_marginRight="10dp"
 		   android:layout_marginLeft="10dp" 
@@ -115,6 +125,8 @@
 	     <Button
 	       android:id="@+id/cancelAdd"
 	       android:layout_width="0dp"
+	       android:textColor="#FFF"
+	       android:drawable="@drawable/button_item"
 	       android:layout_weight=".5"
 	       android:layout_height="wrap_content"
 	       android:layout_marginRight="10dp"

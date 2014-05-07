@@ -4,10 +4,6 @@
 * index.php.  This file contains all the backend functions that run the website
 * Uses Slim framework.  
 */
-
-session_cache_limiter(false);
-session_start();
-
 require 'Slim/Slim.php';
 
 $app = new Slim();
@@ -174,22 +170,6 @@ function login() {
         echo '{"error":{"text":'. $e->getMessage() .'}}'; 
     }
 }
-
-/**
-* A function to log the user out
-*/
-function logout() { 
-    $_SESSION = array(); 
-    if (ini_get("session.use_cookies")) {
-        $params = session_get_cookie_params();
-        setcookie(session_name(), '', time() - 42000,
-            $params["path"], $params["domain"],
-            $params["secure"], $params["httponly"]
-        );
-    }
-    session_destroy();
-}
-
 
 /**
 * A function to get all the classes of the user
